@@ -50,7 +50,7 @@ It is designed mainly for learning full-stack web development concepts and is id
 
 ## 🏗️ Project Structure
 
-![image](image-1.png)
+![image](image-2.png)
 
 
 ## 🔌How the Application Works (Big Picture)
