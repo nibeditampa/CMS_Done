@@ -1,0 +1,116 @@
+<div class="home-container min-h-screen w-full bg-gray-50 font-sans"> 
+
+    <!-- HEADER -->
+    <header-component></header-component>
+
+    <!-- HERO SECTION -->
+    <section class="w-full bg-gradient-to-r from-blue-50 to-blue-100 pt-16 pb-20">
+        <div class="w-full px-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+            <!-- HERO TEXT -->
+            <div class="w-full">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">
+                    Your Partner In <br>
+                    <span class="text-blue-600">Health and Wellness</span>
+                </h1>
+
+                <p class="text-gray-600 mt-5 text-lg leading-relaxed w-full md:w-4/5">
+                    It is a long established fact that a reader will be distracted by readable
+                    content when looking at it's layout.
+                </p>
+
+                <button onclick="router.navigate('/patients')"
+                    class="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold shadow">
+                    Book an Appointment
+                </button>
+            </div>
+
+            <!-- HERO IMAGE -->
+            <div class="flex justify-end w-full">
+                <img src="/frontend/assets/images/doctor.png"
+                    class="w-[520px] md:w-[720px] object-contain"
+                    alt="Doctor Image">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MODULE CARDS -->
+    <section class="mt-20 w-full px-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <div class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
+            onclick="router.navigate('/patients')">
+            <h2 class="text-3xl font-bold text-blue-600">Patients</h2>
+            <p class="text-gray-600 mt-2">View & Manage Patient Profiles</p>
+        </div>
+
+        <div class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
+            onclick="router.navigate('/doctors')">
+            <h2 class="text-3xl font-bold text-purple-600">Doctors</h2>
+            <p class="text-gray-600 mt-2">View Doctor Schedules</p>
+        </div>
+
+        <div class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
+            onclick="router.navigate('/billing')">
+            <h2 class="text-3xl font-bold text-green-600">Bills</h2>
+            <p class="text-gray-600 mt-2">Check Billing & Payments</p>
+        </div>
+
+    </section>
+
+    <!-- ✅ UPDATED SERVICES SECTION (ONLY CHANGE) -->
+    <section class="w-full mt-20 mb-16 px-20 text-center">
+
+        <h2 class="text-3xl font-bold text-gray-800">Our Healthcare Service</h2>
+
+        <p class="text-gray-500 mt-3 max-w-3xl mx-auto">
+            It is a long established fact that a reader will be distracted by the readable
+            content of a page when looking at its layout.
+        </p>
+
+        <!-- ROW 1 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-14">
+
+            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
+                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">💉</div>
+                <h3 class="text-xl font-semibold">Emergency Department</h3>
+                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
+            </div>
+
+            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
+                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">🚼</div>
+                <h3 class="text-xl font-semibold">Pediatric Department</h3>
+                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
+            </div>
+
+            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
+                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">💊</div>
+                <h3 class="text-xl font-semibold">General Physician</h3>
+                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
+            </div>
+
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 mt-12 max-w-5xl mx-auto">
+
+            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
+                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">🧠</div>
+                <h3 class="text-xl font-semibold">Neurology Department</h3>
+                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
+            </div>
+
+            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
+                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">❤️</div>
+                <h3 class="text-xl font-semibold">Cardiology Department</h3>
+                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer-component></footer-component>
+
+</div>

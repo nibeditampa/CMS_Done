@@ -1,0 +1,15 @@
+/* =========================
+   GLOBAL TWEAKS
+   ========================= */
+
+body {
+  scroll-behavior: smooth;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Alert animation */
+#alertContainer > div {
+  transition: all 0.3s ease;
+}
+
