@@ -51,6 +51,11 @@ def handle_ui_routes(handler, path):
         if stripped in FRONTEND_ROUTES:
             serve_static(handler, "frontend/pages/index.html")
             return True
+        
+    # # Serve assets at /assets/... -> frontend/assets/...
+    # if path.startswith("/assets/"):
+    #     serve_static(handler, "frontend" + path)
+    #     return True
 
     # Serve frontend assets
     if path.startswith("/frontend/"):
@@ -60,6 +65,12 @@ def handle_ui_routes(handler, path):
     # API documentation
     if path == "/openapi.yaml":
         serve_static(handler, "openapi.yaml")
+        return True
+    
+    # Dynamic SPA routes (profiles pages)
+    # e.g. /profiles/1 should still load index.html and let the SPA router decide
+    if path.startswith("/profiles/"):
+        serve_static(handler, "frontend/pages/index.html")
         return True
 
     return False
@@ -129,7 +140,9 @@ class ClinicRouter(BaseHTTPRequestHandler):
 
         if path == "/api/billing":
             return create_bill(self)
+        
 
+        return send_404(self)
      
     # ---------------------------
     # UPDATE (PUT)
@@ -147,6 +160,7 @@ class ClinicRouter(BaseHTTPRequestHandler):
         if self.path.startswith("/api/billing/"):
             billing_id = int(self.path.split("/")[-1])
             return update_bill(self, billing_id)
+        
         return send_404(self)
     
     

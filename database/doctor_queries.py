@@ -3,7 +3,7 @@ from .connection import get_connection
 
 def db_get_all():
     conn = get_connection()
-    rows = conn.execute("SELECT * FROM doctors ORDER BY id DESC").fetchall()
+    rows = conn.execute("SELECT * FROM doctors ORDER BY id ASC").fetchall()
     conn.close()
     return [dict(r) for r in rows]
 
@@ -29,7 +29,8 @@ def db_update(doctor_id, data):
     conn = get_connection()
     now = datetime.now().isoformat()
     conn.execute("""
-        UPDATE doctors SET name=?, specialization=?, schedule=?, contact=?, updated_at=?
+        UPDATE doctors
+         SET name=?, specialization=?, schedule=?, contact=?, updated_at=?
         WHERE id=?
     """, (data["name"], data["specialization"], data["schedule"], data["contact"], now, doctor_id))
     conn.commit()

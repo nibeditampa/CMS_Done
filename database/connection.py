@@ -7,6 +7,10 @@ def get_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+def _column_exists(conn, table, column):
+    cols = conn.execute(f"PRAGMA table_info({table})").fetchall()
+    return any(c["name"] == column for c in cols)
+
 def init_database():
     conn = get_connection()
 
@@ -33,19 +37,20 @@ def init_database():
             updated_at TEXT
         )
     """)
-
+    
     conn.execute("""
         CREATE TABLE IF NOT EXISTS billing (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            patient_id INTEGER,
+            patient_id INTEGER NOT NULL,
             doctor_attended TEXT,
             amount REAL,
             bill_date TEXT,
             created_at TEXT,
-            updated_at TEXT
+            updated_at TEXT,
+            FOREIGN KEY(patient_id) REFERENCES patients(id)
         )
     """)
 
     conn.commit()
     conn.close()
-    print("[OK] Database initialized")
+    print("✅Database initialized")

@@ -1,9 +1,10 @@
+# Actual SQL queries — Create, Read, Update, Delete (CRUD)
 from datetime import datetime
 from .connection import get_connection
 
 def db_get_all():
     conn = get_connection()
-    rows = conn.execute("SELECT * FROM patients ORDER BY id DESC").fetchall()
+    rows = conn.execute("SELECT * FROM patients ORDER BY id ASC").fetchall()
     conn.close()
     return [dict(r) for r in rows]
 
@@ -27,9 +28,10 @@ def db_create(data):
 
 def db_update(patient_id, data):
     conn = get_connection()
-    now = datetime.today().isoformat()
+    now = datetime.now().isoformat()
     conn.execute("""
-        UPDATE patients SET name=?, age=?, gender=?, contact=?, updated_at=?
+        UPDATE patients 
+        SET name=?, age=?, gender=?, contact=?, updated_at=?
         WHERE id=?
     """, (data["name"], data["age"], data["gender"], data["contact"], now, patient_id))
     conn.commit()
