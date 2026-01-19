@@ -35,28 +35,38 @@
         </div>
     </section>
 
-    <!-- MODULE CARDS -->
-    <section class="mt-20 w-full px-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+  <!-- MODULE CARDS -->
+<section class="mt-20 w-full px-10 grid grid-cols-1 md:grid-cols-3 gap-10">
 
-        <div class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
-            onclick="router.navigate('/patients')">
-            <h2 class="text-3xl font-bold text-blue-600">Patients</h2>
-            <p class="text-gray-600 mt-2">View & Manage Patient Profiles</p>
-        </div>
+  <!-- Patients -->
+  <div
+    class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition" 
+    onclick="router.navigate('/patients')">
+    <a href="/patients" data-link>
+    <h2 class="text-3xl font-bold text-blue-600">Patients</h2>
+    <p class="text-gray-600 mt-2">View & Manage Patient Profiles</p></a>
+  </div>
 
-        <div class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
-            onclick="router.navigate('/doctors')">
-            <h2 class="text-3xl font-bold text-purple-600">Doctors</h2>
-            <p class="text-gray-600 mt-2">View Doctor Schedules</p>
-        </div>
+  <!-- Doctors -->
+  <div
+     class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
+     onclick="router.navigate('/doctors')">
+      <a href="/doctors" data-link>
+    <h2 class="text-3xl font-bold text-green-600">Doctors</h2>
+    <p class="text-gray-600 mt-2">View & Manage Doctor Details</p></a>
+  </div>
 
-        <div class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
-            onclick="router.navigate('/billing')">
-            <h2 class="text-3xl font-bold text-green-600">Bills</h2>
-            <p class="text-gray-600 mt-2">Check Billing & Payments</p>
-        </div>
+  <!-- Billing -->
+  <div
+     class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
+     onclick="router.navigate('/billing')">
+      <a href="/doctors" data-link>
+    <h2 class="text-3xl font-bold text-purple-600">Billing</h2>
+    <p class="text-gray-600 mt-2">Manage Bills & Payments</p></a>
+  </div>
 
-    </section>
+</section>
+
 
     <!-- ✅ UPDATED SERVICES SECTION (ONLY CHANGE) -->
     <section class="w-full mt-20 mb-16 px-20 text-center">
