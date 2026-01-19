@@ -2,12 +2,12 @@ import { apiGetAll as getPatients } from "../service/patientService.js";
 import { apiGetAll as getDoctors } from "../service/doctorService.js";
 import { apiGetAll as getBillings } from "../service/billingService.js";
 
-export async function initProfileController() {
+export async function initProfilesController() {
   const title = document.getElementById("profilesTitle");
   const head = document.getElementById("tableHead");
-  const body = document.getElementById("tableBody");
-  const loading = document.getElementById("loading");
-  const table = document.getElementById("tableContainer");
+  const body = document.getElementById("profilesTableBody");
+  const loading = document.getElementById("loadingSpinner");
+  const table = document.getElementById("ProfilesTableContainer");
 
   if (!title) return;
 
