@@ -1,0 +1,67 @@
+<div class="max-w-5xl mx-auto p-6">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <h1 id="pageTitle" class="text-3xl font-bold">Profiles Directory</h1>
+
+    <a href="/home" data-link
+       class="inline-flex items-center gap-2 px-4 py-2 text-sm
+              border border-gray-300 rounded-md
+              text-gray-700 bg-white
+              hover:bg-gray-50 transition">
+      ← Back to Home
+    </a>
+  </div>
+
+  <!-- Profile Type Switch -->
+  <div class="flex gap-3 mb-6">
+    <button data-type="patients" class="profile-tab btn-primary">Patients</button>
+    <button data-type="doctors" class="profile-tab btn-outline">Doctors</button>
+    <button data-type="bills" class="profile-tab btn-outline">Bills</button>
+  </div>
+
+  <!-- Controls -->
+  <div class="bg-white p-5 rounded shadow mb-6">
+    <div class="flex flex-col lg:flex-row gap-3">
+
+      <input id="searchInput" type="text"
+             placeholder="Search..."
+             class="w-full lg:w-80 h-10 border rounded px-3 text-sm" />
+
+      <select id="sortBy" class="h-10 border rounded px-3 text-sm">
+        <option value="id">Sort: ID</option>
+        <option value="name">Sort: Name</option>
+      </select>
+
+      <select id="sortDir" class="h-10 border rounded px-3 text-sm">
+        <option value="asc">Asc ↑</option>
+        <option value="desc">Desc ↓</option>
+      </select>
+
+      <div class="ml-auto flex gap-2">
+        <button id="exportCsvBtn" class="btn-outline">CSV</button>
+        <button id="exportPdfBtn" class="btn-primary">PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="bg-white p-5 rounded shadow">
+    <div id="loadingSpinner" class="text-center py-4">Loading...</div>
+
+    <div id="profilesTableContainer" class="hidden overflow-x-auto">
+      <table class="min-w-full border text-sm">
+        <thead class="bg-gray-200">
+          <tr id="tableHead"></tr>
+        </thead>
+        <tbody id="profilesTableBody"></tbody>
+      </table>
+
+      <p id="noProfiles" class="hidden text-center text-gray-500 mt-3">
+        No records found.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/frontend/assets/js/pages/profiles.js"></script>

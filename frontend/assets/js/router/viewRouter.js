@@ -1,60 +1,73 @@
-import { initPatientController } from "../controllers/patientController.js";
-import { initDoctorController } from "../controllers/doctorController.js";
-import { initBillingController } from "../controllers/billingController.js";
+// frontend/assets/js/router/viewRouter.js
 
-// Load a view into #app container
 async function loadView(path) {
-  const html = await fetch(path).then(res => res.text());
+  const res = await fetch(path);
+
+  if (!res.ok) {
+    const fallback = await fetch("/frontend/pages/404.html").then(r => r.text());
+    document.querySelector("#app").innerHTML = fallback;
+    return;
+  }
+
+  const html = await res.text();
   document.querySelector("#app").innerHTML = html;
 }
 
-// Decide which view to load based on URL
 export async function router() {
-  const path = window.location.pathname;
+  let path = window.location.pathname;
+  if (path.length > 1) path = path.replace(/\/$/, "");
+
+  // HOME
   if (path === "/" || path === "/home") {
     await loadView("/frontend/pages/home.html");
+    return;
   }
 
-  else if (path === "/patients") {
+  // PATIENTS
+  if (path === "/patients") {
     await loadView("/frontend/pages/patients.html");
-    initPatientController();
+    const mod = await import("../controller/patientController.js");
+    mod.initPatientController();
+    return;
   }
 
-  else if (path === "/doctors") {
+  // DOCTORS
+  if (path === "/doctors") {
     await loadView("/frontend/pages/doctors.html");
-    initDoctorController();
+    const mod = await import("../controller/doctorController.js");
+    mod.initDoctorController();
+    return;
   }
 
-  else if (path === "/billing") {
+  // BILLINGS
+  if (path === "/billing") {
     await loadView("/frontend/pages/billing.html");
-    initBillingController();
+    const mod = await import("../controller/billingController.js");
+    mod.initBillingController();
+    return;
   }
 
-  else if (path === "/about") {
-    await loadView("/frontend/pages/about.html");
+  // ✅ PROFILES (NEW)
+  if (path === "/profiles") {
+    await loadView("/frontend/pages/profiles.html");
+    const mod = await import("../controller/profileController.js");
+    mod.initProfileController();
+    return;
   }
 
-  else if (path === "/contact") {
-    await loadView("/frontend/pages/contact.html");
-  }
-
-
-
-  else {
-    await loadView("/frontend/pages/404.html");
-  }
+  // DEFAULT
+  await loadView("/frontend/pages/404.html");
 }
 
-// Make links work without page reload
 export function initRouterEvents() {
   document.addEventListener("click", (e) => {
-    if (e.target.matches("[data-link]")) {
-      e.preventDefault();
-      history.pushState(null, "", e.target.href);
-      router();
-    }
+    const link = e.target.closest("[data-link]");
+    if (!link) return;
+
+    e.preventDefault();
+    history.pushState(null, "", link.getAttribute("href"));
+    router();
   });
 
-  // Back/forward buttons support
   window.addEventListener("popstate", router);
 }
