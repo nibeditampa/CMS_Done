@@ -2,7 +2,7 @@ import { apiGetAll as getPatients } from "../service/patientService.js";
 import { apiGetAll as getDoctors } from "../service/doctorService.js";
 import { apiGetAll as getBillings } from "../service/billingService.js";
 
-export async function initProfilesController() {
+export async function initProfileController() {
   const title = document.getElementById("profilesTitle");
   const head = document.getElementById("tableHead");
   const body = document.getElementById("profilesTableBody");

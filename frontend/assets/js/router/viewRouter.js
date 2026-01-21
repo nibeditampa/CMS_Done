@@ -26,7 +26,7 @@ export async function router() {
   // PATIENTS
   if (path === "/patients") {
     await loadView("/frontend/pages/patients.html");
-    const mod = await import("../controller/patientController.js");
+    const mod = await import("../controllers/patientController.js");
     mod.initPatientController();
     return;
   }
@@ -34,7 +34,7 @@ export async function router() {
   // DOCTORS
   if (path === "/doctors") {
     await loadView("/frontend/pages/doctors.html");
-    const mod = await import("../controller/doctorController.js");
+    const mod = await import("../controllers/doctorController.js");
     mod.initDoctorController();
     return;
   }
@@ -42,7 +42,7 @@ export async function router() {
   // BILLINGS
   if (path === "/billing") {
     await loadView("/frontend/pages/billing.html");
-    const mod = await import("../controller/billingController.js");
+    const mod = await import("../controllers/billingController.js");
     mod.initBillingController();
     return;
   }
@@ -50,7 +50,7 @@ export async function router() {
   // ✅ PROFILES (NEW)
   if (path === "/profiles") {
     await loadView("/frontend/pages/profiles.html");
-    const mod = await import("../controller/profileController.js");
+    const mod = await import("../controllers/profilesController.js");
     mod.initProfileController();
     return;
   }
