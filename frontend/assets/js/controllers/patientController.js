@@ -14,73 +14,95 @@ import { resetForm, fillForm } from "../components/PatientForm.js";
 import { setState, getState } from "../state/store.js";
 import { $, createElement } from "../utils/dom.js";
 
-// Setup event listeners and load initial data
-// Initialize the main logic and set up all necessary event listeners
+/**
+ * 1. Initialize Controller
+ * Added event listeners for searchInput and sortSelect
+ */
 export function initPatientController() {
-  // Start by fetching and displaying all patient data immediately upon load
   loadPatients();
 
-  // --- Handle Form Submissions ---
+  // --- Search and Sort Listeners (NEW) ---
+  // These trigger every time the user types or changes the dropdown
+  $("searchInput").addEventListener("input", () => applyFilters());
+  $("sortSelect").addEventListener("change", () => applyFilters());
 
-  // Attach a listener to the 'submit' event of the patient input form
+  // --- Handle Form Submissions ---
   $("patientForm").addEventListener("submit", async (e) => {
-    // Prevent the browser's default form submission behavior (page refresh)
     e.preventDefault();
 
-    // Collect data from the input fields using the custom '$' selector
     const data = {
-      name: $("name").value.trim(),       // Get name value, remove whitespace
-      age: $("age").value.trim(),     // Get age value
-      gender: $("gender").value.trim(), // Get gender value
-      contact: $("contact").value.trim()    // Get contact value
+      name: $("name").value.trim(),
+      age: $("age").value.trim(),
+      gender: $("gender").value.trim(),
+      contact: $("contact").value.trim()
     };
 
-    // Check the application state to see if we are currently editing an existing record
     const { editingId } = getState();
 
-    // Use a ternary operator to decide which action to take:
     editingId
-      ? await updatePatient(editingId, data) // If editingId exists, update the patient
-      : await createNewPatient(data);        // Otherwise, create a new patient
+      ? await updatePatient(editingId, data)
+      : await createNewPatient(data);
   });
 
-  // --- Handle Cancel Button Click ---
-
-  // Attach a listener to the 'click' event of the cancel button
   $("cancelBtn").addEventListener("click", () => {
-    // Clear the editing state (set the ID to null)
     setState({ editingId: null });
-    // Clear all input fields in the form
     resetForm();
   });
 }
 
+/**
+ * 2. Filter and Sort Logic (NEW FUNCTION)
+ * This is added as a standalone function to process data locally
+ */
+export function applyFilters() {
+  const { patients } = getState();
+  const searchTerm = $("searchInput").value.toLowerCase();
+  const sortType = $("sortSelect").value;
 
-// Fetch all patient data from the API and update the user interface
+  // Step A: Filter by Name or Contact
+  let filtered = patients.filter(p => 
+    p.name.toLowerCase().includes(searchTerm) || 
+    p.contact.includes(searchTerm)
+  );
+
+  // Step B: Apply Sorting
+  filtered.sort((a, b) => {
+    switch (sortType) {
+      case "name-asc": return a.name.localeCompare(b.name);
+      case "name-desc": return b.name.localeCompare(a.name);
+      case "age-asc": return a.age - b.age;
+      case "age-desc": return b.age - a.age;
+      case "newest": default: return b.id - a.id; 
+    }
+  });
+
+  // Step C: Render only the filtered/sorted results
+  renderPatientTable(filtered);
+}
+
+/**
+ * 3. Load Patients
+ * Modified to call applyFilters() instead of direct rendering
+ */
 export async function loadPatients() {
-  // Get references to the loading spinner and the main data table elements
   const spinner = $("loadingSpinner");
   const table = $("patientsTableContainer");
 
-  // Show the spinner and hide the table to indicate a loading state
   spinner.style.display = "block";
   table.style.display = "none";
 
-  // Asynchronously fetch all patient records from the backend API
   const patients = await apiGetAll();
-
-  // Store the retrieved patient array in the application's global state
   setState({ patients });
-  // Render the fetched patient data into the HTML table structure
-  renderPatientTable(patients);
+  
+  // Apply current search/sort filters to the newly fetched data
+  applyFilters();
 
-  // Hide the spinner and show the table now that the data is loaded and displayed
   spinner.style.display = "none";
   table.style.display = "block";
 }
 
+// --- Remaining Actions (unchanged) ---
 
-// Create a new patient
 export async function createNewPatient(data) {
   const res = await apiCreate(data);
   if (res.ok) {
@@ -90,17 +112,13 @@ export async function createNewPatient(data) {
   }
 }
 
-// Load a patient into the form for editing
 export async function editPatient(id) {
   const patient = await apiGetOne(id);
-
   setState({ editingId: id });
   fillForm(patient);
-
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Update an existing patient
 export async function updatePatient(id, data) {
   const res = await apiUpdate(id, data);
   if (res.ok) {
@@ -111,12 +129,10 @@ export async function updatePatient(id, data) {
   }
 }
 
-// Delete a patient
 export async function deletePatientAction(id) {
   if (!confirm("Delete this patient?")) return;
-
   const res = await apiDelete(id);
- 	if (res.ok) {
+  if (res.ok) {
     showAlert("Deleted!");
     loadPatients();
   }

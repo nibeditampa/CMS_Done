@@ -1,4 +1,4 @@
-<div class="home-container min-h-screen w-full bg-gray-50 font-sans"> 
+<div class="home-container min-h-screen w-full bg-gray-50 font-sans">
 
     <!-- HEADER -->
     <header-component></header-component>
@@ -15,8 +15,8 @@
                 </h1>
 
                 <p class="text-gray-600 mt-5 text-lg leading-relaxed w-full md:w-4/5">
-                    It is a long established fact that a reader will be distracted by readable
-                    content when looking at it's layout.
+                   Experience world-class healthcare with a personal touch. Our clinic management system 
+                   ensures seamless care, from instant booking to transparent billing.
                 </p>
 
                 <button onclick="router.navigate('/patients')"
@@ -27,98 +27,162 @@
 
             <!-- HERO IMAGE -->
             <div class="flex justify-end w-full">
-                <img src="/frontend/assets/images/doctor.png"
-                    class="w-[520px] md:w-[720px] object-contain"
+                <img src="/frontend/assets/images/doctor.png" class="w-[520px] md:w-[720px] object-contain"
                     alt="Doctor Image">
             </div>
 
         </div>
     </section>
 
-  <!-- MODULE CARDS -->
-<section class="mt-20 w-full px-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+   <!-- Cards Section -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-dark">Health Care Section</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Patient Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-8 text-center transform transition duration-300">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-user-md text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark">Patient Care</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive medical care tailored to your individual needs.
+                         From routine check-ups to specialized treatments, we provide personalized attention for every patient.</p>
+                    <ul class="text-left space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Personalized Treatment Plans</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Appointment Scheduling</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Emergency Care</li>
+                    </ul>
+                    <button class="text-primary font-semibold hover:text-secondary transition">View Patient</button>
+                </div>
 
-  <!-- Patients -->
-  <div
-    class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition" 
-    onclick="router.navigate('/patients')">
-    <a href="/patients" data-link>
-    <h2 class="text-3xl font-bold text-blue-600">Patients</h2>
-    <p class="text-gray-600 mt-2">View & Manage Patient Profiles</p></a>
-  </div>
+                <!-- Doctor Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-8 text-center transform transition duration-300">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-stethoscope text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark">Doctors</h3>
+                    <p class="text-gray-600 mb-6">Meet our team of experienced doctors and specialists who are dedicated to 
+                        providing the highest quality medical care with compassion and expertise.</p>
+                    <ul class="text-left space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Board-Certified Physicians</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Specialized Care</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Continuing Education</li>
+                    </ul>
+                    <button class="text-primary font-semibold hover:text-secondary transition">View Doctors</button>
+                </div>
 
-  <!-- Doctors -->
-  <div
-     class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
-     onclick="router.navigate('/doctors')">
-      <a href="/doctors" data-link>
-    <h2 class="text-3xl font-bold text-green-600">Doctors</h2>
-    <p class="text-gray-600 mt-2">View & Manage Doctor Details</p></a>
-  </div>
-
-  <!-- Billing -->
-  <div
-     class="bg-white p-10 rounded-2xl shadow hover:shadow-xl cursor-pointer text-center transform hover:-translate-y-1 transition"
-     onclick="router.navigate('/billing')">
-      <a href="/doctors" data-link>
-    <h2 class="text-3xl font-bold text-purple-600">Billing</h2>
-    <p class="text-gray-600 mt-2">Manage Bills & Payments</p></a>
-  </div>
-
-</section>
-
-
-    <!-- ✅ UPDATED SERVICES SECTION (ONLY CHANGE) -->
-    <section class="w-full mt-20 mb-16 px-20 text-center">
-
-        <h2 class="text-3xl font-bold text-gray-800">Our Healthcare Service</h2>
-
-        <p class="text-gray-500 mt-3 max-w-3xl mx-auto">
-            It is a long established fact that a reader will be distracted by the readable
-            content of a page when looking at its layout.
-        </p>
-
-        <!-- ROW 1 -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-14">
-
-            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
-                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">💉</div>
-                <h3 class="text-xl font-semibold">Emergency Department</h3>
-                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
+                <!-- Bill Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-8 text-center transform transition duration-300">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-file-invoice-dollar text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-dark">Billing</h3>
+                    <p class="text-gray-600 mb-6">Transparent billing practices and seamless insurance processing. 
+                        We help you understand costs and maximize your benefits.</p>
+                    <ul class="text-left space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Transparent Pricing</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Insurance Claims</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Payment Plans</li>
+                    </ul>
+                    <button class="text-primary font-semibold hover:text-secondary transition">Billing Info</button>
+                </div>
             </div>
-
-            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
-                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">🚼</div>
-                <h3 class="text-xl font-semibold">Pediatric Department</h3>
-                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
-            </div>
-
-            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
-                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">💊</div>
-                <h3 class="text-xl font-semibold">General Physician</h3>
-                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
-            </div>
-
         </div>
-
-        <!-- ROW 2 -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 mt-12 max-w-5xl mx-auto">
-
-            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
-                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">🧠</div>
-                <h3 class="text-xl font-semibold">Neurology Department</h3>
-                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
-            </div>
-
-            <div class="group bg-blue-600 text-white p-10 rounded-2xl shadow-lg hover:-translate-y-2 transition-all duration-300">
-                <div class="text-6xl mb-6 animate-float group-hover:scale-110 transition-transform">❤️</div>
-                <h3 class="text-xl font-semibold">Cardiology Department</h3>
-                <p class="text-sm mt-2 opacity-90">If you use this site regularly and would like to</p>
-            </div>
-
-        </div>
-
     </section>
+
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-dark">Our Medical Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-heart text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Cardiology</h3>
+                    <p class="text-gray-600 mb-4">Comprehensive heart care including diagnostics, treatment, and prevention of cardiovascular diseases.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Echocardiogram</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Stress Test</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Holter Monitor</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-baby text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Pediatrics</h3>
+                    <p class="text-gray-600 mb-4">Specialized care for infants, children, and adolescents with a focus on growth and development.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Routine Check-ups</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Immunizations</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Growth Monitoring</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-brain text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Neurology</h3>
+                    <p class="text-gray-600 mb-4">Advanced neurological care for conditions affecting the brain, spinal cord, and nervous system.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> EEG Testing</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Neurological Exams</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Treatment Plans</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bone text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Orthopedics</h3>
+                    <p class="text-gray-600 mb-4">Treatment of musculoskeletal conditions including bones, joints, muscles, and ligaments.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Joint Replacement</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Sports Injuries</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Physical Therapy</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-lungs text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Respiratory Care</h3>
+                    <p class="text-gray-600 mb-4">Specialized treatment for breathing disorders and respiratory conditions.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Pulmonary Function Tests</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Asthma Management</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> COPD Treatment</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-eye text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-dark">Optical Care</h3>
+                    <p class="text-gray-600 mb-4">Comprehensive eye care including vision testing, diagnosis, and treatment of eye conditions.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Eye Exams</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> LASIK Surgery</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 text-xs mt-1 mr-2"></i> Cataract Treatment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- FOOTER -->
     <footer-component></footer-component>

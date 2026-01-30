@@ -10,7 +10,7 @@ def main():
     port = int(os.environ.get("PORT", "8000"))
     server = ThreadingHTTPServer(("0.0.0.0", port), ClinicRouter)
     
-    print(f"🚀 Server running at http://localhost:{port}")
+    print(f"Server running at http://localhost:{port}")
     server.serve_forever()
 
 if __name__ == "__main__":

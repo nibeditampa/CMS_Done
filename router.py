@@ -36,7 +36,7 @@ from core.static import serve_static
 from core.responses import send_404
 from core.middleware import add_cors_headers
 
-FRONTEND_ROUTES = { "/", "/home", "/patients", "/doctors", "/billing"}
+FRONTEND_ROUTES = { "/", "/home", "/patients", "/doctors", "/billing", "/profiles", "/about", "/contact"}
 
 
 def handle_ui_routes(handler, path):
@@ -105,7 +105,15 @@ class ClinicRouter(BaseHTTPRequestHandler):
             return get_all_patients(self)
 
         if path.startswith("/api/patients/"):
-            patient_id = int(path.split("/")[-1])
+            parts = path.split("/")
+            # Check for /api/patients/:id/profile
+            if len(parts) > 4 and parts[4] == "profile":
+                 patient_id = int(parts[3])
+                 from controllers.patients import get_patient_profile
+                 return get_patient_profile(self, patient_id)
+            
+            # Default /api/patients/:id
+            patient_id = int(parts[3])
             return get_patient(self, patient_id)
 
          # ---------- DOCTOR API ----------

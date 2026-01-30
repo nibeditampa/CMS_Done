@@ -5,7 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clinic Management System</title>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Management System</title>
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4320/4320354.png" type="image/png">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="/frontend/assets/css/style.css">
+
+    <style>
+        body {
+            font-family: "Outfit", sans-serif;
+            letter-spacing: 0.3px;
+        }
+        /* Fix for Fixed Header: Prevents header from covering the top of your pages */
+        #app {
+            padding-top: 80px; 
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <script src="/frontend/env.js"></script>
+
+    <div id="header"></div>
+
+    <main id="app" class="w-full p-6 flex-grow"></main>
+
+    <div id="footer"></div>
+
+    <script type="module">
+        import { loadComponent } from "/frontend/assets/js/utils/loadComponent.js";
+        import { initRouterEvents, router } from "/frontend/assets/js/router/viewRouter.js";
+
+        /**
+         * IMPORTANT: loadComponent usually returns a Promise. 
+         * We use 'await' or '.then()' to ensure the header is actually 
+         * in the DOM before we let the router run logic on it.
+         */
+        async function initApp() {
+            // Load components
+            await loadComponent("#header", "/frontend/assets/js/components/Header.html");
+            await loadComponent("#footer", "/frontend/assets/js/components/Footer.html");
+
+            // Initialize routing
+            initRouterEvents();
+            router();
+        }
+
+        initApp();
+    </script>
+
+</body>
+</html>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4320/4320354.png" type="image/png">
 
     <!-- Tailwind -->

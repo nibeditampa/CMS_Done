@@ -1,68 +1,241 @@
-import { apiGetAll as getPatients } from "../service/patientService.js";
-import { apiGetAll as getDoctors } from "../service/doctorService.js";
-import { apiGetAll as getBillings } from "../service/billingService.js";
+import { apiGetAll as getPatients } from "../services/patientService.js";
+import { apiGetAll as getDoctors } from "../services/doctorService.js";
+import { apiGetAll as getBillings } from "../services/billingService.js";
 
-export async function initProfileController() {
+export async function initProfilesController() {
+  // DOM Elements
   const title = document.getElementById("profilesTitle");
   const head = document.getElementById("tableHead");
   const body = document.getElementById("profilesTableBody");
   const loading = document.getElementById("loadingSpinner");
-  const table = document.getElementById("ProfilesTableContainer");
+  const tableContainer = document.getElementById("profilesTableContainer");
+  const noProfilesMsg = document.getElementById("noProfiles");
+  
+  // Input Elements
+  const searchInput = document.getElementById("searchInput");
+  const sortBySelect = document.getElementById("sortBy");
+  const sortDirSelect = document.getElementById("sortDir");
 
   if (!title) return;
+
+  // State
+  let rawData = [];      // The master list fetched from API
+  let filteredData = []; // The list currently being displayed (after search/sort)
+  let currentType = "patients";
 
   const configs = {
     patients: {
       title: "Patient Profiles",
       headers: ["ID", "Name", "Age", "Open"],
       fetch: getPatients,
-      map: p => [p.patient_id, p.name, p.age]
+      map: p => [p.id, p.name, p.age]
     },
     doctors: {
       title: "Doctor Profiles",
       headers: ["ID", "Name", "Specialization", "Open"],
       fetch: getDoctors,
-      map: d => [d.doctor_id, d.name, d.specialization]
+      map: d => [d.id, d.name, d.specialization]
     },
-    billings: {
+    bills: {
       title: "Billing Profiles",
       headers: ["Patient ID", "Doctor", "Amount", "Open"],
       fetch: getBillings,
-      map: b => [b.patient_id, b.doctor_attended, b.amount]
+      map: b => [b.id, b.doctor_attended, b.amount]
     }
   };
 
-  async function load(type) {
-    loading.classList.remove("hidden");
-    table.classList.add("hidden");
-
-    const cfg = configs[type];
-    title.textContent = cfg.title;
-
-    const data = await cfg.fetch();
-
-    head.innerHTML = cfg.headers.map(h => `<th class="px-3 py-2">${h}</th>`).join("");
+  // --- CORE FUNCTION: Renders the table based on data passed to it ---
+  function renderTable(dataToRender) {
+    const cfg = configs[currentType];
+    
+    // Clear existing
+    head.innerHTML = "";
     body.innerHTML = "";
 
-    data.forEach(item => {
-      body.innerHTML += `
-        <tr class="border-t">
-          ${cfg.map(item).map(v => `<td class="px-3 py-2">${v}</td>`).join("")}
-          <td class="px-3 py-2 text-blue-600 text-sm cursor-pointer">View</td>
-        </tr>`;
+    if (!dataToRender || dataToRender.length === 0) {
+      tableContainer.querySelector('table').classList.add('hidden');
+      noProfilesMsg.classList.remove('hidden');
+      noProfilesMsg.classList.add('flex');
+      return;
+    } else {
+      tableContainer.querySelector('table').classList.remove('hidden');
+      noProfilesMsg.classList.add('hidden');
+      noProfilesMsg.classList.remove('flex');
+    }
+
+    // Headers
+    cfg.headers.forEach(h => {
+      const th = document.createElement("th");
+      th.className = "px-6 py-4";
+      th.innerText = h;
+      head.appendChild(th);
     });
 
-    loading.classList.add("hidden");
-    table.classList.remove("hidden");
+    // Rows
+    dataToRender.forEach(item => {
+      const tr = document.createElement("tr");
+      tr.className = "border-t hover:bg-slate-50 transition-colors";
+
+      const rowValues = cfg.map(item);
+
+      rowValues.forEach(v => {
+        const td = document.createElement("td");
+        td.className = "px-6 py-4";
+        td.innerText = v;
+        tr.appendChild(td);
+      });
+
+      // View Button
+      const viewTd = document.createElement("td");
+      viewTd.className = "px-6 py-4 text-blue-600 cursor-pointer hover:underline hover:text-blue-800 transition-colors";
+      viewTd.innerText = "View Record";
+      
+      viewTd.onclick = () => {
+        const routeType = currentType === 'bills' ? 'bills' : currentType; // slight redundancy check
+        history.pushState(null, "", `/profiles/${routeType}/${item.id}`);
+        import("../router/viewRouter.js").then(m => m.router());
+      };
+
+      tr.appendChild(viewTd);
+      body.appendChild(tr);
+    });
   }
 
+  // --- CORE FUNCTION: Filters and Sorts 'rawData' then calls render ---
+  function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    const sortField = sortBySelect.value; // 'id' or 'name'
+    const sortDir = sortDirSelect.value;  // 'asc' or 'desc'
+
+    // 1. FILTER
+    let result = rawData.filter(item => {
+      // Always search ID
+      if (String(item.id).toLowerCase().includes(searchTerm)) return true;
+      
+      // Dynamic Search based on Type
+      if (currentType === 'patients' || currentType === 'doctors') {
+        return item.name.toLowerCase().includes(searchTerm);
+      } 
+      else if (currentType === 'bills') {
+        // For bills, we usually search by Doctor name or perhaps Patient ID
+        // Assuming item.doctor_attended exists based on map config
+        return (item.doctor_attended && item.doctor_attended.toLowerCase().includes(searchTerm));
+      }
+      return false;
+    });
+
+    // 2. SORT
+    result.sort((a, b) => {
+      let valA, valB;
+
+      if (sortField === 'id') {
+        valA = parseInt(a.id);
+        valB = parseInt(b.id);
+      } else {
+        // Sort by Name
+        if (currentType === 'bills') {
+           // Bills might not have 'name', use 'doctor_attended'
+           valA = a.doctor_attended ? a.doctor_attended.toLowerCase() : "";
+           valB = b.doctor_attended ? b.doctor_attended.toLowerCase() : "";
+        } else {
+           valA = a.name ? a.name.toLowerCase() : "";
+           valB = b.name ? b.name.toLowerCase() : "";
+        }
+      }
+
+      if (valA < valB) return sortDir === 'asc' ? -1 : 1;
+      if (valA > valB) return sortDir === 'asc' ? 1 : -1;
+      return 0;
+    });
+
+    filteredData = result;
+    renderTable(filteredData);
+  }
+
+  // --- API LOAD FUNCTION ---
+  async function load(type) {
+    loading.classList.remove("hidden");
+    tableContainer.classList.add("hidden");
+    
+    // Reset search inputs on tab switch? Optional. 
+    // searchInput.value = ""; 
+
+    const cfg = configs[type];
+    title.innerHTML = `<span class="text-blue-600">${cfg.title.split(' ')[0]}</span> Directory`;
+
+    try {
+      rawData = await cfg.fetch();
+      currentType = type;
+      // Initial Apply (will show all data, default sorted)
+      applyFilters(); 
+    } catch (e) {
+      console.error("Fetch failed", e);
+      loading.innerText = "Failed to load data";
+      return;
+    }
+
+    loading.classList.add("hidden");
+    tableContainer.classList.remove("hidden");
+  }
+
+  // --- EVENT LISTENERS ---
+
+  // 1. Tab Switching
   document.querySelectorAll(".profile-tab").forEach(btn => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".profile-tab").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+      // Update Button Styles
+      document.querySelectorAll(".profile-tab").forEach(b => {
+        // Reset to Outline style
+        b.classList.remove("bg-blue-500", "text-white");
+        b.classList.add("bg-white", "text-blue-600");
+      });
+      // Set Active style
+      btn.classList.remove("bg-white", "text-blue-600");
+      btn.classList.add("bg-blue-500", "text-white");
+
       load(btn.dataset.type);
     });
   });
 
+  // 2. Search & Sort Inputs
+  searchInput.addEventListener("input", applyFilters);
+  sortBySelect.addEventListener("change", applyFilters);
+  sortDirSelect.addEventListener("change", applyFilters);
+
+  // 3. Export CSV (Exports currently filtered view)
+  document.getElementById("exportCsvBtn").addEventListener("click", () => {
+    if (!filteredData || filteredData.length === 0) {
+      alert("No data to export");
+      return;
+    }
+
+    const cfg = configs[currentType];
+    const headers = cfg.headers.slice(0, -1); // Remove "Open"
+    
+    // Generate Rows from Filtered Data
+    const rows = filteredData.map(item => cfg.map(item));
+
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += headers.join(",") + "\n";
+
+    rows.forEach(row => {
+      csvContent += row.join(",") + "\n";
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `${currentType}_report.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+
+  // 4. Export PDF
+  document.getElementById("exportPdfBtn").addEventListener("click", () => {
+    window.print();
+  });
+
+  // INITIAL LOAD
   load("patients");
 }

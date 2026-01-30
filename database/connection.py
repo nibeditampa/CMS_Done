@@ -53,4 +53,4 @@ def init_database():
 
     conn.commit()
     conn.close()
-    print("✅Database initialized")
+    print("Database initialized")

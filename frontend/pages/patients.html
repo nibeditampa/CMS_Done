@@ -1,113 +1,138 @@
-<!-- Patients Page -->
-<div class="max-w-6xl mx-auto px-6 py-8">
+<div class="relative min-h-screen font-sans text-slate-700 bg-slate-100">
 
-  <!-- Page Header -->
-  <div class="mb-6">
-    <h1 class="text-3xl font-semibold text-slate-800">Patient Management</h1>
-    <a href="/home" data-link
-      class="inline-block mt-2 text-sm text-blue-600 hover:underline">
-      ← Back to Dashboard
-    </a>
+  <div class="fixed inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop" 
+         alt="Modern Hospital Reception" 
+         class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-slate-800/60 backdrop-blur-[2px]"></div>
   </div>
 
-  <!-- Add Patient Card -->
-  <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
-    <h2 class="text-lg font-semibold text-slate-700 mb-4">
-      Add New Patient
-    </h2>
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-10">
 
-    <form id="patientForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-      <!-- Name -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
       <div>
-        <label class="block text-sm text-slate-600 mb-1">Patient Name *</label>
-        <input id="name" type="text" required
-          placeholder="Enter patient name"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <h1 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
+          <svg class="w-10 h-10 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          Patient Management
+        </h1>
+        <p class="text-slate-200 text-sm mt-1 ml-12 font-medium">Admissions, patient records, and demographic tracking</p>
       </div>
 
-      <!-- Age -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Age *</label>
-        <input id="age" type="number" required
-          placeholder="Enter age"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Gender -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Gender *</label>
-        <select id="gender" required
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option value="">Select gender</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Contact Number *</label>
-        <input id="contact" type="tel" required
-          placeholder="Enter contact number"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Buttons -->
-      <div class="md:col-span-2 flex gap-3 mt-2">
-        <button id="submitBtn" type="submit"
-          class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2.5 rounded-md transition">
-          Add Patient
-        </button>
-
-        <button id="cancelBtn" type="button"
-          class="flex-1 bg-slate-400 hover:bg-slate-500 text-white text-sm font-medium py-2.5 rounded-md hidden transition">
-          Cancel
-        </button>
-      </div>
-    </form>
-  </div>
-
-  <!-- Patient Records -->
-  <div class="bg-white rounded-xl shadow-sm p-6">
-    <h2 class="text-lg font-semibold text-slate-700 mb-4">
-      Patient Records
-    </h2>
-
-    <!-- Loading -->
-    <div id="loadingSpinner"
-      class="text-center text-sm text-slate-500 py-6">
-      Loading...
+      <a href="/home" data-link
+        class="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold
+               bg-white/10 backdrop-blur-md border border-white/20 rounded-xl 
+               text-white hover:bg-white/20 transition-all duration-200 shadow-lg">
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Back to Dashboard
+      </a>
     </div>
 
-    <!-- Table -->
-    <div id="patientsTableContainer" class="hidden overflow-x-auto">
-      <table class="w-full border-collapse text-sm">
-        <thead class="bg-slate-100 text-slate-600">
-          <tr>
-            <th class="px-4 py-3 text-left">Patient ID</th>
-            <th class="px-4 py-3 text-left">Name</th>
-            <th class="px-4 py-3 text-left">Age</th>
-            <th class="px-4 py-3 text-left">Gender</th>
-            <th class="px-4 py-3 text-left">Contact</th>
-            <th class="px-4 py-3 text-left">Action</th>
-          </tr>
-        </thead>
-
-        <tbody id="patientsTableBody" class="divide-y">
-          <!-- injected by JS -->
-        </tbody>
-      </table>
-
-      <div id="noPatients"
-        class="hidden text-center text-sm text-slate-500 py-6">
-        No patients found. Please add a patient.
+    <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-8 mb-10">
+      <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+        <div class="p-2 bg-cyan-600 rounded-lg text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+        </div>
+        <h2 class="text-xl font-bold text-slate-800">Add New Patient</h2>
       </div>
+
+      <form id="patientForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Patient Name *</label>
+          <input id="name" type="text" required placeholder="Full Name"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none transition-all">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Age *</label>
+          <input id="age" type="number" required placeholder="Years"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none transition-all">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Gender *</label>
+          <select id="gender" required
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none transition-all bg-white appearance-none cursor-pointer">
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 ml-1">Contact Number *</label>
+          <input id="contact" type="tel" required placeholder="+91 XXXXX XXXXX"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 outline-none transition-all">
+        </div>
+
+        <div class="md:col-span-2 flex gap-4 mt-2">
+          <button id="submitBtn" type="submit"
+            class="flex-1 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-200 transition-all transform active:scale-95">
+            Add Patient to Records
+          </button>
+          <button id="cancelBtn" type="button"
+            class="hidden flex-1 bg-slate-100 text-slate-600 font-bold py-3.5 rounded-xl border border-slate-200 hover:bg-slate-200 transition-all">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+
+      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+  <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-2">
+      <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+      </svg>
+      <h2 class="text-lg font-bold text-slate-800 uppercase tracking-wide">Patient Admissions Directory</h2>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+      <div class="relative">
+        <input id="searchInput" type="text" placeholder="Search by name or contact..." 
+          class="pl-10 pr-4 py-2 w-full sm:w-64 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-cyan-500 outline-none transition-all">
+        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </div>
+      
+      <select id="sortSelect" class="px-4 py-2 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-cyan-500 outline-none cursor-pointer">
+        <option value="newest">Newest First</option>
+        <option value="name-asc">Name (A-Z)</option>
+        <option value="name-desc">Name (Z-A)</option>
+        <option value="age-asc">Age (Youngest)</option>
+        <option value="age-desc">Age (Oldest)</option>
+      </select>
     </div>
   </div>
 
-  <!-- Alerts -->
-  <div id="alertContainer" class="fixed bottom-6 right-6 z-50"></div>
+      <div id="loadingSpinner" class="flex flex-col items-center py-20 text-slate-400">
+        <div class="animate-spin h-10 w-10 border-4 border-cyan-600 border-t-transparent rounded-full mb-4"></div>
+        <p class="font-medium tracking-wide">Accessing Patient Database...</p>
+      </div>
 
+      <div id="patientsTableContainer" class="hidden overflow-x-auto">
+        <table class="w-full text-center border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-500 uppercase tracking-widest">
+              <th class="px-8 py-5">Patient ID</th>
+              <th class="px-8 py-5">Name</th>
+              <th class="px-8 py-5">Age</th>
+              <th class="px-8 py-5">Gender</th>
+              <th class="px-8 py-5">Contact</th>
+              <th class="px-8 py-5 text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody id="patientsTableBody" class="divide-y divide-slate-100 text-sm font-medium text-slate-700 bg-white">
+            </tbody>
+        </table>
+
+        <div id="noPatients" class="hidden flex flex-col items-center justify-center py-20 text-slate-400">
+           <svg class="w-20 h-20 mb-4 opacity-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h18a7 7 0 00-7-7z"></path></svg>
+           <p class="text-lg font-medium">Patient directory is currently empty.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="alertContainer" class="fixed bottom-8 right-8 z-50"></div>
+
+  </div>
 </div>

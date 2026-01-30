@@ -1,115 +1,133 @@
-<!-- Doctors Page -->
-<div class="max-w-6xl mx-auto px-6 py-8">
+<div class="relative min-h-screen font-sans text-slate-700 bg-slate-100">
 
-  <!-- Page Header -->
-  <div class="mb-6">
-    <h1 class="text-3xl font-semibold text-slate-800">Doctor Management</h1>
-    <a href="/home" data-link
-      class="inline-block mt-2 text-sm text-blue-600 hover:underline">
-      ← Back to Dashboard
-    </a>
+  <div class="fixed inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?q=80&w=2070&auto=format&fit=crop" 
+         alt="Doctor Consultation Room" 
+         class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-blue-900/40 backdrop-blur-[2px]"></div>
   </div>
 
-  <!-- Add Doctor Card -->
-  <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
-    <h2 class="text-lg font-semibold text-slate-700 mb-4">
-      Add New Doctor
-    </h2>
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-10">
 
-    <form id="doctorForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-      <!-- Doctor Name -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Doctor Name *</label>
-        <input id="name" type="text" required
-          placeholder="Enter doctor name"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+       <div>
+        <h1 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
+          <svg class="w-10 h-10 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h18a7 7 0 00-7-7z"></path></svg>
+          Doctor Management
+        </h1>
+        <p class="text-blue-100 text-sm mt-1 ml-12 font-medium">Manage medical staff and departmental schedules</p>
       </div>
 
-      <!-- Specialization -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Specialization *</label>
-        <input id="specialization" type="text" required
-          placeholder="Enter specialization"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Schedule -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Schedule *</label>
-        <input id="schedule" type="text" required
-          placeholder="e.g. Mon–Fri (10AM – 4PM)"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Contact Number *</label>
-        <input id="contact" type="tel" required
-          placeholder="Enter contact number"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Buttons -->
-      <div class="md:col-span-2 flex gap-3 mt-2">
-        <button id="submitBtn" type="submit"
-          class="flex-1 bg-blue-600 hover:bg-blue-700 text-white
-                 text-sm font-medium py-2.5 rounded-md transition">
-          Add Doctor
-        </button>
-
-        <button id="cancelBtn" type="button"
-          class="flex-1 bg-slate-400 hover:bg-slate-500 text-white
-                 text-sm font-medium py-2.5 rounded-md hidden transition">
-          Cancel
-        </button>
-      </div>
-    </form>
-  </div>
-
-  <!-- Doctor Records -->
-  <div class="bg-white rounded-xl shadow-sm p-6">
-    <h2 class="text-lg font-semibold text-slate-700 mb-4">
-      Doctor Records
-    </h2>
-
-    <!-- Loading -->
-    <div id="loadingSpinner"
-      class="text-center text-sm text-slate-500 py-6">
-      Loading...
+      <a href="/home" data-link
+        class="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold
+               bg-white/10 backdrop-blur-md border border-white/20 rounded-xl 
+               text-white hover:bg-white/20 transition-all duration-200 shadow-lg">
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Back to Dashboard
+      </a>
     </div>
 
-    <!-- Table -->
-    <div id="doctorsTableContainer" class="hidden overflow-x-auto">
-      <table class="w-full border-collapse text-sm">
-        <thead class="bg-slate-100 text-slate-600">
-          <tr>
-            <th class="px-4 py-3 text-left">Doctor ID</th>
-            <th class="px-4 py-3 text-left">Name</th>
-            <th class="px-4 py-3 text-left">Specialization</th>
-            <th class="px-4 py-3 text-left">Schedule</th>
-            <th class="px-4 py-3 text-left">Contact</th>
-            <th class="px-4 py-3 text-left">Action</th>
-          </tr>
-        </thead>
+    <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-8 mb-10">
+       <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+        <div class="p-2 bg-blue-600 rounded-lg text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+        </div>
+        <h2 class="text-xl font-bold text-slate-800">Add New Doctor</h2>
+      </div>
 
-        <tbody id="doctorsTableBody" class="divide-y">
-          <!-- injected by JS -->
-        </tbody>
-      </table>
+      <form id="doctorForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Doctor Name *</label>
+          <input id="name" type="text" required placeholder="Dr. John Doe"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all">
+        </div>
 
-      <div id="noDoctors"
-        class="hidden text-center text-sm text-slate-500 py-6">
-        No doctors found. Please add a doctor.
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Specialization *</label>
+          <input id="specialization" type="text" required placeholder="e.g. Cardiology"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Schedule *</label>
+          <input id="schedule" type="text" required placeholder="Mon–Fri (10AM – 4PM)"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Contact Number *</label>
+          <input id="contact" type="tel" required placeholder="+91 XXXXX XXXXX"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all">
+        </div>
+
+        <div class="md:col-span-2 flex gap-4 mt-2">
+          <button id="submitBtn" type="submit"
+            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-200 transition-all transform active:scale-95">
+            Register Doctor
+          </button>
+          <button id="cancelBtn" type="button"
+            class="hidden flex-1 bg-slate-100 text-slate-600 font-bold py-3.5 rounded-xl border border-slate-200 hover:bg-slate-200 transition-all">
+            Discard
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+      
+      <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          <h2 class="text-lg font-bold text-slate-800 uppercase tracking-wide">Doctor Records Directory</h2>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <div class="relative">
+            <input id="searchInput" type="text" placeholder="Search doctor or specialty..." 
+              class="pl-10 pr-4 py-2 w-full sm:w-64 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          
+          <select id="sortSelect" class="px-4 py-2 bg-white border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 outline-none cursor-pointer">
+            <option value="newest">Newest Added</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="specialty">Specialization</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="loadingSpinner" class="flex flex-col items-center py-20 text-slate-400">
+        <div class="animate-spin h-10 w-10 border-4 border-blue-600 border-t-transparent rounded-full mb-4"></div>
+        <p class="font-medium">Syncing Staff Records...</p>
+      </div>
+
+      <div id="doctorsTableContainer" class="hidden overflow-x-auto">
+        <table class="w-full text-center border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase tracking-widest">
+              <th class="px-8 py-5">ID</th>
+              <th class="px-8 py-5 text-left">Doctor Name</th>
+              <th class="px-8 py-5">Specialization</th>
+              <th class="px-8 py-5">Schedule</th>
+              <th class="px-8 py-5">Contact</th>
+              <th class="px-8 py-5 text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody id="doctorsTableBody" class="divide-y divide-slate-100 text-sm font-medium text-slate-700 bg-white">
+          </tbody>
+        </table>
+
+        <div id="noDoctors" class="hidden flex flex-col items-center justify-center py-16 text-slate-400">
+           <svg class="w-16 h-16 mb-4 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+           <p class="text-lg">No staff records found.</p>
+        </div>
       </div>
     </div>
+
+    <div id="alertContainer" class="fixed bottom-8 right-8 z-50"></div>
+
   </div>
-
-  <!-- Alerts -->
-  <div id="alertContainer" class="fixed bottom-6 right-6 z-50"></div>
-
 </div>

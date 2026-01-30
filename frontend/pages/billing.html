@@ -1,113 +1,111 @@
-<!-- Billing Page -->
-<div class="max-w-6xl mx-auto px-6 py-8">
+<div class="relative min-h-screen font-sans text-slate-700 bg-slate-100">
 
-  <!-- Page Header -->
-  <div class="mb-6">
-    <h1 class="text-3xl font-semibold text-slate-800">Billing Management</h1>
-    <a href="/home" data-link
-      class="inline-block mt-2 text-sm text-blue-600 hover:underline">
-      ← Back to Dashboard
-    </a>
+  <div class="fixed inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop" 
+         alt="Modern Hospital Interior" 
+         class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px]"></div>
   </div>
 
-  <!-- Add Bill Card -->
-  <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
-    <h2 class="text-lg font-semibold text-slate-700 mb-4">
-      Create New Bill
-    </h2>
-
-    <form id="billingForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-      <!-- Patient ID -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-10">
+    
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
       <div>
-        <label class="block text-sm text-slate-600 mb-1">Patient ID *</label>
-        <input id="patient_id" type="text" required
-          placeholder="Enter patient ID"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <h1 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
+          <svg class="w-10 h-10 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Billing Management
+        </h1>
+        <p class="text-slate-300 text-sm mt-1 ml-12">Clinic Financial Records & Invoicing</p>
       </div>
 
-      <!-- Doctor Attended -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Doctor Attended *</label>
-        <input id="doctor_attended" type="text" required
-          placeholder="Enter doctor name"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Amount -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Amount (₹) *</label>
-        <input id="amount" type="number" required
-          placeholder="Enter amount"
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Bill Date -->
-      <div>
-        <label class="block text-sm text-slate-600 mb-1">Bill Date *</label>
-        <input id="bill_date" type="date" required
-          class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      </div>
-
-      <!-- Buttons -->
-      <div class="md:col-span-2 flex gap-3 mt-2">
-        <button id="submitBtn" type="submit"
-          class="flex-1 bg-blue-600 hover:bg-blue-700 text-white
-                 text-sm font-medium py-2.5 rounded-md transition">
-          Generate Bill
-        </button>
-
-        <button id="cancelBtn" type="button"
-          class="flex-1 bg-slate-400 hover:bg-slate-500 text-white
-                 text-sm font-medium py-2.5 rounded-md hidden transition">
-          Cancel
-        </button>
-      </div>
-    </form>
-  </div>
-
-  <!-- Billing Records -->
-  <div class="bg-white rounded-xl shadow-sm p-6">
-    <h2 class="text-lg font-semibold text-slate-700 mb-4">
-      Billing Records
-    </h2>
-
-    <!-- Loading -->
-    <div id="loadingSpinner"
-      class="text-center text-sm text-slate-500 py-6">
-      Loading...
+      <a href="/home" data-link
+        class="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold
+               bg-white/10 backdrop-blur-md border border-white/20 rounded-xl 
+               text-white hover:bg-white/20 transition-all duration-200 shadow-lg">
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Back to Dashboard
+      </a>
     </div>
 
-    <!-- Table -->
-    <div id="billingsTableContainer" class="hidden overflow-x-auto">
-      <table class="w-full border-collapse text-sm">
-        <thead class="bg-slate-100 text-slate-600">
-          <tr>
-            <th class="px-4 py-3 text-left">Patient ID</th>
-            <th class="px-4 py-3 text-left">Doctor Attended</th>
-            <th class="px-4 py-3 text-left">Amount (₹)</th>
-            <th class="px-4 py-3 text-left">Bill Date</th>
-            <th class="px-4 py-3 text-left">Action</th>
-          </tr>
-        </thead>
+    <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-8 mb-10">
+      <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+        <div class="p-2 bg-blue-600 rounded-lg text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+        </div>
+        <h2 class="text-xl font-bold text-slate-800">Create New Bill</h2>
+      </div>
 
-        <tbody id="billingsTableBody" class="divide-y">
-          <!-- injected by JS -->
-        </tbody>
-      </table>
+      <form id="billingForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Patient ID *</label>
+          <input id="patient_id" type="text" required placeholder="Enter Patient ID"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all">
+        </div>
 
-      <div id="noBills"
-        class="hidden text-center text-sm text-slate-500 py-6">
-        No bills found. Please generate a bill.
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Doctor Attended *</label>
+          <input id="doctor_attended" type="text" required placeholder="Enter Doctor Name"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Amount (₹) *</label>
+          <input id="amount" type="number" required placeholder="0.00"
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold text-blue-600">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Bill Date *</label>
+          <input id="bill_date" type="date" required
+            class="w-full h-12 px-4 bg-slate-50 border border-slate-300 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all">
+        </div>
+
+        <div class="md:col-span-2 flex gap-4 mt-2">
+          <button id="submitBtn" type="submit"
+            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-200 transition-all transform active:scale-95">
+            Generate Official Bill
+          </button>
+          <button id="cancelBtn" type="button"
+            class="hidden flex-1 bg-slate-100 text-slate-600 font-bold py-3.5 rounded-xl border border-slate-200 hover:bg-slate-200 transition-all">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+      <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center gap-2">
+         <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+         <h2 class="text-lg font-bold text-slate-800 uppercase tracking-wide">Recent Billing Records</h2>
+      </div>
+
+      <div id="loadingSpinner" class="flex flex-col items-center py-20 text-slate-400">
+        <div class="animate-spin h-10 w-10 border-4 border-blue-600 border-t-transparent rounded-full mb-4"></div>
+        <p class="font-medium">Fetching Records...</p>
+      </div>
+
+      <div id="billingsTableContainer" class="hidden overflow-x-auto">
+        <table class="w-full text-center border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase tracking-widest">
+              <th class="px-8 py-5">Patient ID</th>
+              <th class="px-8 py-5">Doctor Attended</th>
+              <th class="px-8 py-5">Amount (₹)</th>
+              <th class="px-8 py-5">Bill Date</th>
+              <th class="px-8 py-5 text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody id="billingsTableBody" class="divide-y divide-slate-100 text-sm font-medium text-slate-700">
+            </tbody>
+        </table>
+
+        <div id="noBills" class="hidden flex flex-col items-center justify-center py-16 text-slate-400">
+           <svg class="w-16 h-16 mb-4 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+           <p class="text-lg">No billing history found.</p>
+        </div>
       </div>
     </div>
+
+    <div id="alertContainer" class="fixed bottom-8 right-8 z-50"></div>
   </div>
-
-  <!-- Alerts -->
-  <div id="alertContainer" class="fixed bottom-6 right-6 z-50"></div>
-
 </div>

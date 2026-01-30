@@ -47,11 +47,87 @@ export async function router() {
     return;
   }
 
-  // ✅ PROFILES (NEW)
+  // ABOUT
+  if (path === "/about") {
+    await loadView("/frontend/pages/about.html");
+    return;
+  }
+
+  // CONTACT
+  if (path === "/contact") {
+    await loadView("/frontend/pages/contact.html");
+    return;
+  }
+
+  // PROFILES DIRECTORY (AUTO OPEN PATIENTS)
   if (path === "/profiles") {
     await loadView("/frontend/pages/profiles.html");
+
     const mod = await import("../controllers/profilesController.js");
-    mod.initProfileController();
+    mod.initProfilesController();
+
+    // 👇 automatically open Patients tab
+    setTimeout(() => {
+      const btn = document.querySelector('[data-type="patients"]');
+      if (btn) btn.click();
+    }, 100);
+
+    return;
+  }
+
+
+
+  // PATIENT PROFILE (single patient)
+  if (path.startsWith("/profiles/patients/")) {
+    await loadView("/frontend/pages/profile.html");
+
+    const patientId = path.split("/")[3];
+
+    const mod = await import("../controllers/profileController.js");
+    if (mod.loadPatientProfile) {
+      mod.loadPatientProfile(patientId);
+    } else {
+      console.error("loadPatientProfile not implemented");
+    }
+    return;
+  }
+
+  // DOCTOR PROFILE (single doctor)
+  if (path.startsWith("/profiles/doctors/")) {
+    await loadView("/frontend/pages/profile.html");
+
+    const doctorId = path.split("/")[3];
+
+    const mod = await import("../controllers/profileController.js");
+    if (mod.loadDoctorProfile) {
+      mod.loadDoctorProfile(doctorId);
+    } else {
+      console.error("loadDoctorProfile not implemented");
+    }
+    return;
+  }
+
+  // BILL PROFILE (single bill)
+  if (path.startsWith("/profiles/bills/")) {
+    await loadView("/frontend/pages/profile.html");
+
+    const billId = path.split("/")[3];
+
+    const mod = await import("../controllers/profileController.js");
+    if (mod.loadBillProfile) {
+      mod.loadBillProfile(billId);
+    } else {
+      console.error("loadBillProfile not implemented");
+    }
+    return;
+  }
+
+  // PROFILES DIRECTORY (list)
+  if (path === "/profiles") {
+    await loadView("/frontend/pages/profiles.html");
+
+    const mod = await import("../controllers/profilesController.js");
+    mod.initProfilesController();
     return;
   }
 

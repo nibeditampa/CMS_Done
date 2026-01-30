@@ -1,49 +1,109 @@
-<header-component></header-component>
+<div class="relative min-h-screen font-sans text-blue-950 bg-transparent py-20 px-6">
 
-<div class="contact-container">
+    <div class="max-w-7xl mx-auto text-center mb-16 relative z-10">
+        <h3 class="text-blue-500 font-black uppercase tracking-[0.3em] mb-3 text-[11px]">Contact Directory</h3>
+        <h1 class="text-4xl md:text-5xl font-black text-white-500 leading-tight">Get In <span class="text-blue-400">Touch</span></h1>
+        <p class="text-blue-700/100 mt-4 text-base font-medium max-w-xl mx-auto leading-relaxed">
+            Connect with our administrative desk for appointments, medical inquiries, or technical support.
+        </p>
+    </div>
 
-    <section class="contact-hero">
-        <h1>Contact Us</h1>
-        <p>We are here to help! Reach out for project inquiries, support, or suggestions.</p>
-    </section>
+    <section class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+        
+        <div class="bg-blue-900/80 backdrop-blur-md p-10 rounded-[40px] text-white flex flex-col justify-between shadow-2xl border border-white/10 transition-all hover:border-white/20">
+            <div>
+                <h2 class="text-xl font-black mb-10 tracking-tight flex items-center gap-3">
+                    <span class="w-8 h-1 bg-blue-400 rounded-full"></span>
+                    Clinic Information
+                </h2>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0 border border-white/10">
+                            <i class="fas fa-map-marker-alt text-blue-400 text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-[11px] uppercase tracking-widest text-blue-300">Our Location</h4>
+                            <p class="mt-1 text-[13px] text-blue-50 font-medium">123 Medical Plaza, New York, NY 10001</p>
+                        </div>
+                    </div>
 
-    <section class="contact-section">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0 border border-white/10">
+                            <i class="fas fa-phone-alt text-blue-400 text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-[11px] uppercase tracking-widest text-blue-300">Direct Lines</h4>
+                            <p class="mt-1 text-[13px] text-blue-50 font-medium">(123) 456-7890 • (123) 456-7891</p>
+                        </div>
+                    </div>
 
-        <div class="contact-info-box">
-            <h2>Get in Touch</h2>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0 border border-white/10">
+                            <i class="fas fa-envelope text-blue-400 text-sm"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-[11px] uppercase tracking-widest text-blue-300">Email Support</h4>
+                            <p class="mt-1 text-[13px] text-blue-50 font-medium">support@medicareclinic.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <p><strong>Clinic Management System Project</strong></p>
-
-            <p>Email: <a href="mailto:nibedita.mpa@gmail.com">nibedita.mpa@gmail.com</a></p>
-            <p>Phone: +91 8763508407</p>
-
-            <p>
-                Feel free to connect regarding features, bugs, 
-                improvements, or academic project review.
-            </p>
+            <div class="mt-10 p-6 bg-white/5 rounded-3xl border border-white/10">
+                <h4 class="text-[11px] font-black uppercase text-blue-400 tracking-widest mb-3">Clinical Hours</h4>
+                <div class="grid grid-cols-2 gap-y-2 text-[12px] font-bold">
+                    <span class="text-blue-200">Mon - Fri:</span> <span class="text-right">8AM - 8PM</span>
+                    <span class="text-blue-200">Saturday:</span> <span class="text-right">9AM - 5PM</span>
+                    <span class="text-blue-200">Sunday:</span> <span class="text-right text-rose-400">Emergency Only</span>
+                </div>
+            </div>
         </div>
 
-        <div class="contact-form-box">
-            <h2>Send a Message</h2>
+        <div class="bg-white/80 backdrop-blur-md p-10 rounded-[40px] shadow-2xl border border-white/40 flex flex-col justify-between">
+            <div>
+                <h2 class="text-2xl font-black text-blue-950 mb-2 tracking-tight">Send a Message</h2>
+                <p class="text-[11px] font-bold text-blue-400 mb-8 uppercase tracking-widest">Medical Support Inquiry</p>
 
-            <form class="contact-form">
-                <label>Your Name</label>
-                <input type="text" placeholder="Enter your name">
+                <form class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-black text-blue-900 uppercase tracking-widest ml-1">Full Name</label>
+                            <input type="text" placeholder="John Doe" 
+                                class="w-full h-12 px-5 bg-blue-50/50 border border-blue-100 rounded-xl text-[13px] font-semibold text-blue-900 focus:bg-white focus:border-blue-500 outline-none transition-all">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-black text-blue-900 uppercase tracking-widest ml-1">Email Address</label>
+                            <input type="email" placeholder="john@example.com" 
+                                class="w-full h-12 px-5 bg-blue-50/50 border border-blue-100 rounded-xl text-[13px] font-semibold text-blue-900 focus:bg-white focus:border-blue-500 outline-none transition-all">
+                        </div>
+                    </div>
 
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email">
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] font-black text-blue-900 uppercase tracking-widest ml-1">Message Detail</label>
+                        <textarea rows="4" placeholder="How can we help?" 
+                            class="w-full p-5 bg-blue-50/50 border border-blue-100 rounded-2xl text-[13px] font-semibold text-blue-900 focus:bg-white focus:border-blue-500 outline-none transition-all resize-none"></textarea>
+                    </div>
 
-                <label>Message</label>
-                <textarea rows="3" placeholder="Write your message here..."></textarea>
-
-                <button type="button" onclick="alert('Message submitted!')">
-                    Send Message
-                </button>
-            </form>
+                    <button type="button" onclick="alert('Message submitted!')" 
+                        class="w-full py-4 bg-blue-900 text-white text-[12px] font-black rounded-xl border-2 border-blue-900 hover:bg-white hover:text-blue-900 transition-all shadow-xl uppercase tracking-[0.2em] transform active:scale-95">
+                        Dispatch Inquiry
+                    </button>
+                </form>
+            </div>
         </div>
-
     </section>
+
+    <div class="max-w-7xl mx-auto mt-16 flex justify-center relative z-10">
+        <div class="bg-white/60 backdrop-blur-xl px-10 py-5 rounded-full border border-white/40 shadow-xl flex items-center gap-6 group hover:scale-105 transition-all duration-500">
+            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-600/30 group-hover:rotate-[360deg] transition-transform duration-700">
+                <i class="fas fa-laptop-code text-white text-sm"></i>
+            </div>
+            <div>
+                <h5 class="text-[10px] font-black uppercase text-blue-700 tracking-[0.2em]">System Developer</h5>
+                <p class="text-base font-black text-blue-950">Nibedita Mahapatra</p>
+            </div>
+        </div>
+    </div>
 
 </div>
-
-<footer-component></footer-component>

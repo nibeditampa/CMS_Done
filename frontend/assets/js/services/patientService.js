@@ -46,3 +46,8 @@ export function apiUpdate(id, data) {
 export function apiDelete(id) {
   return fetch(`${API_URL}/${id}`, { method: "DELETE" });
 }
+
+export async function fetchPatientProfile(patientId) {
+  const res = await fetch(`${API_URL}/${patientId}/profile`);
+  return await res.json();
+}
