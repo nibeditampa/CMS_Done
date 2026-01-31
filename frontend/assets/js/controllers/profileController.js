@@ -1,5 +1,7 @@
 import { apiGetAll as getPatients } from "../services/patientService.js";
 import { apiGetAll as getBillings } from "../services/billingService.js";
+import { apiGetAll as getDoctors } from "../services/doctorService.js";
+
 
 export async function loadPatientProfile(patientId) {
   const container = document.getElementById("profileContainer");
@@ -62,8 +64,6 @@ export async function loadPatientProfile(patientId) {
   }
 }
 
-import { apiGetAll as getDoctors } from "../services/doctorService.js";
-
 export async function loadDoctorProfile(doctorId) {
   const container = document.getElementById("profileContainer");
 
@@ -98,6 +98,7 @@ export async function loadBillProfile(billId) {
 
   try {
     const bills = await getBillings();
+    console.log("billing data",bills)
     const bill = bills.find(b => b.id == billId);
 
     if (!bill) {

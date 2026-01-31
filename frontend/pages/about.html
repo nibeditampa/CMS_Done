@@ -1,43 +1,33 @@
-<header-component></header-component>
+<div class="about-container bg-slate-950 font-sans">
+    <header-component></header-component>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="About MediCare Clinic" class="rounded-xl shadow-lg w-full">
-                </div>
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl font-bold mb-6 text-dark">About MediCare Clinic</h2>
-                    <p class="text-gray-600 mb-6 text-lg">Founded in 2005, MediCare Clinic has been serving our community with excellence in healthcare. Our mission is to provide compassionate, high-quality medical services that promote wellness and healing.</p>
-                    <p class="text-gray-600 mb-6 text-lg">We combine cutting-edge medical technology with personalized patient care to deliver outstanding health outcomes. Our multidisciplinary approach ensures comprehensive treatment for all your healthcare needs.</p>
-                    <div class="grid grid-cols-2 gap-4 mt-8">
-                        <div class="flex items-center">
-                            <i class="fas fa-trophy text-primary text-2xl mr-3"></i>
-                            <div>
-                                <h4 class="font-bold text-dark">18+ Years</h4>
-                                <p class="text-sm text-gray-600">Experience</p>
-                            </div>
+    <section id="about" class="relative py-24 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="relative p-12 md:p-16 rounded-[3rem] bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-2xl animate-fade-in-up">
+                <div class="flex flex-col lg:flex-row items-center gap-16 relative z-10">
+                    <div class="lg:w-1/2">
+                        <div class="relative group">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 class="relative rounded-2xl border border-slate-700 w-full object-cover shadow-2xl">
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-users text-primary text-2xl mr-3"></i>
-                            <div>
-                                <h4 class="font-bold text-dark">100K+</h4>
-                                <p class="text-sm text-gray-600">Patients Served</p>
+                    </div>
+
+                    <div class="lg:w-1/2">
+                        <span class="text-blue-400 font-black uppercase tracking-[0.2em] text-sm mb-4 block">Our Heritage</span>
+                        <h2 class="text-4xl font-black mb-6 text-white leading-tight">Setting the Standard in <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Modern Medicine</span></h2>
+                        <p class="text-slate-300 mb-8 text-lg leading-relaxed">
+                            Since 2005, MediCare Clinic has evolved from a local practice into a premier healthcare destination. We blend empathetic clinical expertise with the latest digital health innovations.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
+                                <h4 class="text-3xl font-black text-white">100K+</h4>
+                                <p class="text-xs font-bold text-blue-400 uppercase tracking-widest">Lives Impacted</p>
                             </div>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-user-md text-primary text-2xl mr-3"></i>
-                            <div>
-                                <h4 class="font-bold text-dark">50+</h4>
-                                <p class="text-sm text-gray-600">Expert Doctors</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-hospital text-primary text-2xl mr-3"></i>
-                            <div>
-                                <h4 class="font-bold text-dark">24/7</h4>
-                                <p class="text-sm text-gray-600">Emergency Care</p>
+                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
+                                <h4 class="text-3xl font-black text-white">50+</h4>
+                                <p class="text-xs font-bold text-blue-400 uppercase tracking-widest">Specialists</p>
                             </div>
                         </div>
                     </div>
@@ -46,76 +36,102 @@
         </div>
     </section>
 
-    <!-- What is CMS -->
-    <section class="about-section max-w-5xl mx-auto py-12 px-6">
-        <h2 class="text-3xl font-bold mb-4 text-blue-600">What is the CMS?</h2>
-        <p class="mb-4 leading-relaxed">
-            The Clinic Management System (CMS) is a web-based platform created to streamline
-            day-to-day clinical operations. It eliminates paperwork and provides a centralized
-            dashboard for managing patients, doctors, schedules, billing, and appointments.
-        </p>
-        <p class="leading-relaxed">
-            Designed with simplicity, accuracy, and real-world usability in mind, this system
-            supports both medical staff and administrative personnel in improving productivity
-            and patient care.
-        </p>
-    </section>
-
-    <!-- Features -->
-    <section class="features-section max-w-5xl mx-auto py-12 px-6 bg-white rounded-xl shadow-md">
-        <h2 class="text-3xl font-bold mb-6 text-blue-600">Core Features</h2>
-        <ul class="space-y-3 list-disc ml-6">
-            <li><strong>Patient Management:</strong> Register, update, and view patient profiles.</li>
-            <li><strong>Doctor Management:</strong> Add doctors, maintain schedules, and track availability.</li>
-            <li><strong>Billing & Payments:</strong> Generate bills, update payments, and view transaction history.</li>
-            <li><strong>Appointment System:</strong> Schedule and manage patient appointments with ease.</li>
-            <li><strong>Responsive UI:</strong> Easy to use on desktops, tablets, and mobile devices.</li>
-        </ul>
-    </section>
-
-    <!-- Mission & Vision -->
-    <section class="mission-vision max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-8">
-        <div class="box bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition">
-            <h2 class="text-3xl font-bold mb-4 text-blue-600">Our Mission</h2>
-            <p class="leading-relaxed">
-                To empower small and medium-sized clinics with a reliable, user-friendly
-                digital management platform that improves workflow efficiency and enhances
-                the quality of patient care.
-            </p>
+    <section class="py-20 bg-slate-900 text-white overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500 rounded-full filter blur-[120px] animate-pulse"></div>
         </div>
 
-        <div class="box bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition">
-            <h2 class="text-3xl font-bold mb-4 text-blue-600">Our Vision</h2>
-            <p class="leading-relaxed">
-                To build a unified, accessible healthcare management ecosystem that enables
-                clinics to adopt smart digital tools without complexity or high cost.
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-black mb-8">Powering Precision with <span class="text-blue-400">Next-Gen Technology</span></h2>
+            <p class="max-w-3xl mx-auto text-slate-400 text-lg leading-relaxed mb-12">
+                Our proprietary Clinic Management System (CMS) is the heartbeat of our operations. By digitizing the entire patient journey, we eliminate administrative delays, ensuring our medical staff spends less time on paperwork and more time on your health.
             </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
+                    <i class="fas fa-bolt text-blue-400 text-xl mb-4"></i>
+                    <h5 class="font-bold mb-2">Real-time Schedulng</h5>
+                    <p class="text-xs text-slate-500">Zero-wait time appointment coordination.</p>
+                </div>
+                <div class="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
+                    <i class="fas fa-shield-halved text-emerald-400 text-xl mb-4"></i>
+                    <h5 class="font-bold mb-2">Secure Records</h5>
+                    <p class="text-xs text-slate-500">Encrypted patient data management.</p>
+                </div>
+                <div class="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
+                    <i class="fas fa-chart-line text-purple-400 text-xl mb-4"></i>
+                    <h5 class="font-bold mb-2">Health Analytics</h5>
+                    <p class="text-xs text-slate-500">Data-driven treatment optimizations.</p>
+                </div>
+                <div class="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group hover:bg-white/10 transition-all">
+                    <i class="fas fa-mobile-screen text-teal-400 text-xl mb-4"></i>
+                    <h5 class="font-bold mb-2">Responsive Access</h5>
+                    <p class="text-xs text-slate-500">Manage health from any device.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Tech Stack -->
-    <section class="tech-stack max-w-5xl mx-auto py-12 px-6">
-        <h2 class="text-3xl font-bold mb-6 text-blue-600">Technology Stack</h2>
-        <ul class="tech-list space-y-2 list-disc ml-6">
-            <li>Python (Backend)</li>
-            <li>SQLite Database</li>
-            <li>HTML5, CSS3, JavaScript</li>
-            <li>Modular Frontend Architecture</li>
-            <li>REST API Communication</li>
-        </ul>
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div class="p-12 rounded-[3rem] bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-xl animate-fade-in-up animation-delay-200">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-black mb-6 text-white">What is the <span class="text-blue-400">CMS?</span></h2>
+                    <p class="text-slate-300 leading-relaxed mb-10">
+                        The Clinic Management System is a proprietary web-based platform designed to eliminate paperwork and provide a centralized dashboard for managing patients, doctors, and real-time clinical operations.
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-950/50 border border-white/5 text-slate-400 text-sm italic">#Efficiency</div>
+                        <div class="p-4 rounded-xl bg-slate-950/50 border border-white/5 text-slate-400 text-sm italic">#Scalability</div>
+                        <div class="p-4 rounded-xl bg-slate-950/50 border border-white/5 text-slate-400 text-sm italic">#Security</div>
+                        <div class="p-4 rounded-xl bg-slate-950/50 border border-white/5 text-slate-400 text-sm italic">#Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Developer Section -->
-    <section class="developer-section max-w-5xl mx-auto py-12 px-6 bg-white rounded-xl shadow-md mb-16">
-        <h2 class="text-3xl font-bold mb-4 text-blue-600">About the Developer</h2>
-        <p class="leading-relaxed">
-            Developed by <strong>Your Name</strong> as a final year project.
-            With a strong focus on clean UI, practical backend logic, and
-            maintainable folder architecture, this CMS is built to reflect
-            real-world clinic operations in a simple and efficient manner.
-        </p>
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="p-12 rounded-[3rem] bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-xl hover:border-blue-500/50 transition-all duration-500 group animate-fade-in-up">
+                    <i class="fas fa-bullseye text-blue-400 text-4xl mb-6"></i>
+                    <h2 class="text-3xl font-black mb-4 text-white">Our Mission</h2>
+                    <p class="text-slate-400 leading-relaxed">
+                        To empower clinics with reliable digital tools that improve workflow efficiency and enhance the quality of patient care through precision technology.
+                    </p>
+                </div>
+
+                <div class="p-12 rounded-[3rem] bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-xl hover:border-indigo-500/50 transition-all duration-500 group animate-fade-in-up animation-delay-200">
+                    <i class="fas fa-eye text-indigo-400 text-4xl mb-6"></i>
+                    <h2 class="text-3xl font-black mb-4 text-white">Our Vision</h2>
+                    <p class="text-slate-400 leading-relaxed">
+                        To build a unified healthcare ecosystem where technology and compassion coexist to set a new global standard for clinical management.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto p-12 rounded-[2.5rem] bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden border border-slate-700/50 shadow-2xl animate-fade-in-up">
+                <i class="fas fa-code absolute -right-10 -bottom-10 text-9xl text-white/5"></i>
+                
+                <div class="relative z-10 text-center md:text-left">
+                    <h2 class="text-3xl font-black mb-6">About the Architect</h2>
+                    <p class="text-slate-300 text-lg leading-relaxed mb-8">
+                        This Clinic Management System was engineered by <strong class="text-blue-400">Nibedita Mahapatra</strong> as a capstone project. Designed with a modular Python backend and a RESTful communication layer.
+                    </p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 italic text-blue-400">#Python</span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 italic text-blue-400">#SQLite3</span>
+                        <span class="px-4 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 italic text-blue-400">#JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer-component></footer-component>
 </div>
-
-<footer-component></footer-component>
