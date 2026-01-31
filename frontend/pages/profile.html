@@ -1,100 +1,65 @@
-<div class="relative min-h-screen font-sans text-blue-950 bg-blue-50/30 overflow-hidden">
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="max-w-6xl mx-auto px-4">
 
-  <div class="fixed inset-0 z-0">
-    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop" 
-         alt="Hospital Background" 
-         class="w-full h-full object-cover opacity-20" />
-    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white/40 to-blue-100/20 backdrop-blur-[2px]"></div>
-  </div>
-
-  <div class="relative z-10 max-w-6xl mx-auto p-6 lg:p-10">
-
-    <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6 bg-blue-900/90 backdrop-blur-xl p-8 rounded-[40px] border border-white/20 shadow-2xl shadow-blue-900/20">
-      <div class="flex items-center gap-5">
-        <div class="h-16 w-16 bg-blue-600 rounded-3xl flex items-center justify-center shadow-lg shadow-blue-500/40 transform -rotate-3 group-hover:rotate-0 transition-transform">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h18a7 7 0 00-7-7z"></path>
-          </svg>
-        </div>
-        <div>
-          <h1 class="text-4xl font-black text-white tracking-tighter">Patient Profile</h1>
-          <p class="text-blue-300 font-bold text-[11px] tracking-[0.3em] uppercase mt-1">Medical Record #PT-7847</p>
-        </div>
+    <!-- TOP HEADER -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900">Patient Profile</h1>
+        <p class="text-sm text-gray-500 mt-1">
+          View patient details and billing history
+        </p>
       </div>
 
-      <div class="flex gap-4">
-        <button id="exportCsvBtn" class="px-8 py-4 text-[12px] font-black bg-white text-blue-900 rounded-2xl border-2 border-white hover:bg-transparent hover:text-white transition-all shadow-xl uppercase tracking-widest">
+      <div class="flex gap-3">
+        <button id="exportCsvBtn" class="px-4 py-2 text-sm bg-yellow-400 text-black rounded-md
+                 hover:bg-yellow-500 transition shadow">
           CSV
         </button>
 
-        <button id="exportPdfBtn" class="px-8 py-4 text-[12px] font-black bg-rose-600 text-white rounded-2xl shadow-xl hover:bg-rose-700 transition-all transform hover:-translate-y-1 uppercase tracking-widest">
+        <button id="exportPdfBtn" class="px-4 py-2 text-sm bg-red-600 text-white rounded-md
+                 hover:bg-red-700 transition shadow">
           PDF
         </button>
       </div>
     </div>
 
-    <div id="profileContainer" class="space-y-10">
+    <!-- PROFILE CONTENT -->
+    <div id="profileContainer" class="space-y-6">
 
-      <div class="bg-white/80 backdrop-blur-md rounded-[40px] shadow-2xl border border-white overflow-hidden transition-all hover:border-blue-200">
-        <div class="bg-blue-950 px-10 py-5 border-b-4 border-blue-500 flex items-center gap-3">
-           <span class="w-2 h-6 bg-blue-500 rounded-full"></span>
-           <h2 class="text-sm font-black text-white uppercase tracking-[0.2em]">Personal Information</h2>
-        </div>
-        
-        <div class="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="space-y-1">
-            <span class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Full Name</span>
-            <p class="text-xl font-black text-blue-950">Ashutosh Mahapatra</p>
-          </div>
-          <div class="space-y-1">
-            <span class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Age</span>
-            <p class="text-xl font-black text-blue-950">25 Years</p>
-          </div>
-          <div class="space-y-1">
-            <span class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Gender</span>
-            <p class="text-xl font-black text-blue-600">Male</p>
-          </div>
-          <div class="space-y-1">
-            <span class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Contact Number</span>
-            <p class="text-xl font-black text-blue-950 tracking-tighter">+91 7847857696</p>
-          </div>
+      <!-- BASIC DETAILS CARD -->
+      <div class="bg-white rounded-xl shadow-sm border p-6">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">
+          Basic Details
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+          <p><span class="font-medium text-gray-600">Name:</span> Ashutosh Mahapatra</p>
+          <p><span class="font-medium text-gray-600">Age:</span> 25</p>
+          <p><span class="font-medium text-gray-600">Gender:</span> Male</p>
+          <p><span class="font-medium text-gray-600">Contact:</span> 7847857696</p>
         </div>
       </div>
 
-      <div class="bg-white/80 backdrop-blur-md rounded-[40px] shadow-2xl border border-white overflow-hidden transition-all hover:border-emerald-200">
-        <div class="bg-blue-950 px-10 py-5 border-b-4 border-emerald-500 flex justify-between items-center">
-           <div class="flex items-center gap-3">
-             <span class="w-2 h-6 bg-emerald-500 rounded-full"></span>
-             <h2 class="text-sm font-black text-white uppercase tracking-[0.2em]">Financial Ledger</h2>
-           </div>
-           <span class="bg-emerald-500/20 text-emerald-400 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-emerald-500/30">All Clear</span>
-        </div>
+      <!-- BILLING HISTORY CARD -->
+      <div class="bg-white rounded-xl shadow-sm border p-6">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">
+          Billing History
+        </h2>
 
         <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="bg-blue-50/50 text-[11px] font-black text-blue-400 uppercase tracking-widest border-b border-blue-50">
-                <th class="px-10 py-8">Attending Doctor</th>
-                <th class="px-10 py-8">Amount Paid</th>
-                <th class="px-10 py-8">Billing Date</th>
-                <th class="px-10 py-8 text-right">Receipt</th>
+          <table class="min-w-full border text-sm rounded-lg overflow-hidden">
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="px-4 py-3 text-left">Doctor</th>
+                <th class="px-4 py-3 text-left">Amount</th>
+                <th class="px-4 py-3 text-left">Date</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-blue-50 text-[15px] font-bold text-blue-900">
-              <tr class="hover:bg-blue-50/50 transition-colors">
-                <td class="px-10 py-8">
-                  <div class="flex items-center gap-3">
-                    <div class="h-10 w-10 bg-blue-100 rounded-xl flex items-center justify-center font-black text-blue-600 text-[11px]">NV</div>
-                    <span class="font-black">Dr. Neha Verma</span>
-                  </div>
-                </td>
-                <td class="px-10 py-8 text-emerald-600 font-black">₹4,000.00</td>
-                <td class="px-10 py-8 text-blue-400/80">Jan 03, 2026</td>
-                <td class="px-10 py-8 text-right">
-                  <button class="px-6 py-2.5 bg-blue-950 text-white font-black rounded-xl hover:bg-white hover:text-blue-900 border-2 border-blue-950 transition-all text-[10px] uppercase tracking-widest shadow-md">
-                    View
-                  </button>
-                </td>
+            <tbody class="divide-y">
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3">Neha Verma</td>
+                <td class="px-4 py-3 font-medium">₹4000</td>
+                <td class="px-4 py-3">2026-01-03</td>
               </tr>
             </tbody>
           </table>
@@ -103,12 +68,13 @@
 
     </div>
 
-    <div class="mt-16 flex justify-center">
-      <a href="/profiles" data-link class="px-10 py-4 text-[13px] font-black bg-blue-950 text-white rounded-full border-2 border-blue-950 hover:bg-white hover:text-blue-900 transition-all shadow-2xl flex items-center gap-3 group">
-        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-        RETURN TO DIRECTORY
+    <!-- BACK BUTTON -->
+    <div class="mt-8">
+      <a href="/profiles" data-link class="inline-flex items-center gap-2 px-4 py-2 text-sm
+               border border-gray-300 rounded-md
+               text-gray-700 bg-white
+               hover:bg-gray-50 transition">
+        ← Back to Profiles
       </a>
     </div>
 
