@@ -122,7 +122,6 @@ export async function loadBillProfile(billId) {
     container.innerHTML = "<p>Failed to load bill profile</p>";
   }
 }
-
 function setupExports(data, filename) {
   const csvBtn = document.getElementById("exportCsvBtn");
   const pdfBtn = document.getElementById("exportPdfBtn");
@@ -135,7 +134,8 @@ function setupExports(data, filename) {
     newCsvBtn.addEventListener("click", () => {
       const headers = Object.keys(data).join(",");
       const values = Object.values(data).map(v => `"${v}"`).join(",");
-      const csvContent = "data:text/csv;charset=utf-8," + headers + "\n" + values;
+      const csvContent =
+        "data:text/csv;charset=utf-8," + headers + "\n" + values;
 
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement("a");

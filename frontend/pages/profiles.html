@@ -1,5 +1,15 @@
-<div class="relative min-h-screen font-sans text-slate-700 bg-slate-100">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profiles Directory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen font-sans text-slate-700 bg-slate-100">
 
+<div class="relative min-h-screen">
+
+  <!-- Background -->
   <div class="fixed inset-0 z-0">
     <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop" 
          alt="Hospital Background" 
@@ -9,64 +19,78 @@
 
   <div class="relative z-10 max-w-7xl mx-auto p-6 lg:p-10">
 
+    <!-- Header Card -->
     <div class="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 p-8 mb-10">
       
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
         <div>
-          <h1 id="profilesTitle" class="text-3xl font-black text-slate-600 tracking-tight flex items-center gap-4">
+          <h1 id="profilesTitle" class="text-3xl font-black text-slate-700 tracking-tight">
             <span class="text-blue-600">Profiles</span> Directory
           </h1>
-          <p class="text-slate-500 font-bold mt-2 text-lg">Comprehensive records management system.</p>
+          <p class="text-slate-500 font-semibold mt-1">Comprehensive records management system.</p>
         </div>
 
-        <a href="/home" data-link class="group inline-flex items-center gap-3 px-8 py-4 text-md font-black
-                      bg-slate-600 text-white rounded-xl shadow-2xl hover:bg-blue-600 transition-all duration-300">
-          <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-          BACK TO DASHBOARD
+        <a href="/home" data-link
+           class="inline-flex items-center gap-2 px-5 py-3 text-sm font-bold bg-slate-700 text-white rounded-lg shadow hover:bg-blue-600 transition">
+          ← Back to Dashboard
         </a>
       </div>
 
-      <div class="flex flex-wrap gap-4 mb-10">
-        <button data-type="patients" class="profile-tab px-10 py-4 text-md font-black rounded-2xl transition-all duration-300 shadow-lg bg-blue-500 text-white border-2 border-white-600 hover:bg-white hover:text-blue-600">
+      <!-- Tabs -->
+      <div class="flex flex-wrap gap-3 mb-8">
+        <button data-type="patients" class="profile-tab px-6 py-2 text-sm font-bold rounded-lg bg-blue-600 text-white shadow">
           Patients
         </button>
-        <button data-type="doctors" class="profile-tab px-10 py-4 text-md font-black rounded-2xl transition-all duration-300 shadow-lg bg-white text-blue-600 border-2 border-white-600 hover:bg-blue-500 hover:text-white">
+        <button data-type="doctors" class="profile-tab px-6 py-2 text-sm font-bold rounded-lg bg-white text-blue-600 border shadow hover:bg-blue-600 hover:text-white transition">
           Doctors
         </button>
-        <button data-type="bills" class="profile-tab px-10 py-4 text-md font-black rounded-2xl transition-all duration-300 shadow-lg bg-white text-blue-600 border-2 border-white-600 hover:bg-blue-500 hover:text-white">
+        <button data-type="bills" class="profile-tab px-6 py-2 text-sm font-bold rounded-lg bg-white text-blue-600 border shadow hover:bg-blue-600 hover:text-white transition">
           Bills
         </button>
       </div>
 
-      <div class="bg-slate-100 rounded-3xl p-6 border border-slate-200 shadow-inner">
-        <div class="flex flex-col xl:flex-row gap-6 xl:items-center justify-between">
+      <!-- Controls -->
+      <div class="bg-slate-100 rounded-2xl p-4 border border-slate-200 shadow-inner">
+        <div class="flex flex-col xl:flex-row gap-4 xl:items-center justify-between">
           
-          <div class="flex flex-col lg:flex-row gap-4 w-full xl:w-auto">
-            <div class="relative w-full lg:w-[500px] group">
-              <input id="searchInput" type="text" placeholder="Search by name, ID, or details..."
-                class="w-full pl-6 h-14 bg-white border-2 border-slate-200 rounded-2xl text-md font-semibold
-                       focus:ring-8 focus:ring-blue-500/5 focus:border-blue-500 transition-all outline-none shadow-sm" />
-            </div>
+          <div class="flex flex-col lg:flex-row gap-3 w-full xl:w-auto">
+            <input id="searchInput" type="text" placeholder="Search..."
+              class="w-full lg:w-[420px] px-4 h-11 bg-white border border-slate-300 rounded-lg text-sm font-medium
+                     focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none shadow-sm" />
 
-            <div class="flex gap-4">
-              <select id="sortBy" class="h-14 px-6 bg-white border-2 border-slate-200 rounded-2xl text-md font-bold text-slate-700 outline-none shadow-sm cursor-pointer hover:border-blue-400">
+            <div class="flex gap-3">
+              <select id="sortBy" class="h-11 px-4 bg-white border border-slate-300 rounded-lg text-sm font-semibold shadow-sm">
                 <option value="id">Sort: ID</option>
                 <option value="name">Sort: Name</option>
               </select>
-              <select id="sortDir" class="h-14 px-6 bg-white border-2 border-slate-200 rounded-2xl text-md font-bold text-slate-700 outline-none shadow-sm cursor-pointer hover:border-blue-400">
+              <select id="sortDir" class="h-11 px-4 bg-white border border-slate-300 rounded-lg text-sm font-semibold shadow-sm">
                 <option value="asc">Asc ↑</option>
                 <option value="desc">Desc ↓</option>
               </select>
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <button id="exportCsvBtn" class="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-8 h-14 text-md font-black text-emerald-700 
-            bg-white border-2 border-emerald-100 rounded-2xl hover:bg-emerald-600 hover:text-white transition-all shadow-xl">
+          <!-- Export Buttons -->
+          <div class="flex gap-3">
+            <!-- CSV -->
+            <button id="exportCsvBtn"
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-emerald-700 
+                     bg-white border border-emerald-200 rounded-lg shadow hover:bg-emerald-600 hover:text-white transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+              </svg>
               CSV
             </button>
-            <button id="exportPdfBtn" class="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-8 h-14 
-            text-md font-black text-white bg-rose-600 rounded-2xl hover:bg-rose-700 shadow-xl transition-all">
+
+            <!-- PDF -->
+            <button id="exportPdfBtn"
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-rose-600 
+                     bg-white border border-rose-200 rounded-lg shadow hover:bg-rose-600 hover:text-white transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 16v-8m0 0l-4 4m4-4l4 4M4 20h16" />
+              </svg>
               PDF
             </button>
           </div>
@@ -74,28 +98,32 @@
       </div>
     </div>
 
-    <div class="bg-white rounded-[20px] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] overflow-hidden border border-slate-200">
+    <!-- Table Card -->
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
       
-      <div id="loadingSpinner" class="flex flex-col justify-center items-center py-32 bg-white">
-        <div class="h-20 w-20 rounded-xl border-8 border-slate-100 border-t-blue-600 animate-spin"></div>
-        <span class="mt-6 text-lg font-black tracking-widest text-slate-400 uppercase">Fetching Big Data...</span>
+      <div id="loadingSpinner" class="flex flex-col justify-center items-center py-24 bg-white">
+        <div class="h-16 w-16 rounded-xl border-8 border-slate-100 border-t-blue-600 animate-spin"></div>
+        <span class="mt-4 text-sm font-bold tracking-widest text-slate-400 uppercase">Loading...</span>
       </div>
 
       <div id="profilesTableContainer" class="hidden overflow-x-auto">
         <table class="w-full text-left border-collapse min-w-[1000px]">
           <thead>
-            <tr id="tableHead" class="bg-slate-600 border-blue-600 text-lg font-black text-white uppercase tracking-tighter">
+            <tr id="tableHead" class="bg-slate-700 text-sm font-bold text-white uppercase">
             </tr>
           </thead>
-          <tbody id="profilesTableBody" class="divide-y-2 divide-slate-100 text-md font-bold text-slate-700 bg-white">
+          <tbody id="profilesTableBody" class="divide-y divide-slate-100 text-sm font-medium text-slate-700 bg-white">
           </tbody>
         </table>
 
-        <div id="noProfiles" class="hidden flex flex-col items-center justify-center py-32 bg-white">
-          <p class="text-3xl font-black text-slate-800 italic">No Matching Records Found</p>
+        <div id="noProfiles" class="hidden flex flex-col items-center justify-center py-24 bg-white">
+          <p class="text-xl font-bold text-slate-600 italic">No Matching Records Found</p>
         </div>
       </div>
     </div>
 
   </div>
 </div>
+
+</body>
+</html>
