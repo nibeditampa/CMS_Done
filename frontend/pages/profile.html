@@ -1,3 +1,15 @@
+<style>
+  /* Print adjustments for profile PDF export */
+  @media print {
+    body { background: white !important; color: #111827 !important; }
+    .min-h-screen { background: transparent !important; }
+    a[data-link], button, .no-print { display: none !important; }
+    .max-w-6xl { max-width: 100% !important; padding: 0 !important; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+  }
+</style>
+
 <div class="min-h-screen bg-gray-50 py-8">
   <div class="max-w-6xl mx-auto px-4">
 
@@ -46,18 +58,18 @@
 
         <div class="overflow-x-auto">
           <table class="min-w-full border text-sm rounded-lg overflow-hidden">
-            <thead class="bg-gray-100 text-gray-700">
-              <tr>
-                <th class="px-4 py-3 text-left">Doctor</th>
-                <th class="px-4 py-3 text-left">Amount</th>
-                <th class="px-4 py-3 text-left">Date</th>
+            <thead>
+              <tr class="bg-blue-600 text-white text-left">
+                <th class="px-4 py-3 text-xs uppercase tracking-wide">Doctor</th>
+                <th class="px-4 py-3 text-xs uppercase tracking-wide text-right">Amount</th>
+                <th class="px-4 py-3 text-xs uppercase tracking-wide">Date</th>
               </tr>
             </thead>
-            <tbody class="divide-y">
-              <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3">Neha Verma</td>
-                <td class="px-4 py-3 font-medium">₹4000</td>
-                <td class="px-4 py-3">2026-01-03</td>
+            <tbody>
+              <tr class="bg-white hover:bg-blue-50">
+                <td class="px-4 py-3 text-slate-800 font-medium">Neha Verma</td>
+                <td class="px-4 py-3 text-right text-emerald-700 font-semibold">₹4000</td>
+                <td class="px-4 py-3 text-slate-600">2026-01-03</td>
               </tr>
             </tbody>
           </table>

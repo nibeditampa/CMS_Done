@@ -231,9 +231,57 @@ export async function initProfilesController() {
     document.body.removeChild(link);
   });
 
-  // 4. Export PDF
+  // 4. Export PDF — open a print-friendly window with only the report
   document.getElementById("exportPdfBtn").addEventListener("click", () => {
-    window.print();
+    if (!filteredData || filteredData.length === 0) {
+      alert("No data to export");
+      return;
+    }
+
+    const cfg = configs[currentType];
+    const headers = cfg.headers.slice(0, -1); // Remove "Open"
+    const rows = filteredData.map(item => cfg.map(item));
+
+    // Minimal print styles for a PDF-friendly table
+    const style = `
+      <style>
+        html,body{margin:0;padding:20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#111827}
+        table{width:100%;border-collapse:collapse;font-size:12px}
+        th,td{border:1px solid #e5e7eb;padding:8px 10px;text-align:left;vertical-align:top}
+        th{background:#111827;color:#ffffff;text-transform:uppercase;font-size:11px}
+        caption{font-size:18px;margin-bottom:8px;text-align:left;font-weight:700;color:#0ea5e9}
+        @media print{body{padding:8mm} a{display:none}}
+      </style>
+    `;
+
+    let html = `<!doctype html><html><head><meta charset="utf-8"><title>${cfg.title} Report</title>${style}</head><body>`;
+    html += `<div style="margin-bottom:12px;"><strong>${cfg.title}</strong> — Generated ${new Date().toLocaleString()}</div>`;
+    html += '<table><thead><tr>';
+    headers.forEach(h => { html += `<th>${h}</th>`; });
+    html += '</tr></thead><tbody>';
+
+    rows.forEach(row => {
+      html += '<tr>';
+      row.forEach(cell => {
+        const safe = String(cell === null || cell === undefined ? '' : cell).replace(/</g, '&lt;');
+        html += `<td>${safe}</td>`;
+      });
+      html += '</tr>';
+    });
+
+    html += '</tbody></table></body></html>';
+
+    const w = window.open('', '_blank');
+    if (!w) {
+      alert('Popup blocked. Allow popups or use the browser print option.');
+      return;
+    }
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
+    w.focus();
+    // Allow rendering then trigger print
+    setTimeout(() => { w.print(); }, 600);
   });
 
   // INITIAL LOAD
